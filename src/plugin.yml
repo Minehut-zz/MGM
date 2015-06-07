@@ -1,0 +1,4 @@
+name: MGM
+main: com.minehut.mgm.MGM
+version: 1.0
+depends: [Commons]
