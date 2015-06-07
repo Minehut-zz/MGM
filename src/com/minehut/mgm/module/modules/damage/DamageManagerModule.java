@@ -5,10 +5,7 @@ import com.minehut.mgm.MGM;
 import com.minehut.mgm.module.Module;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Fish;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Projectile;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -69,9 +66,9 @@ public class DamageManagerModule implements Module {
 	public void cancelDeath(CustomDamageEvent event) {
 		if(event.isCancelled()) return;
 
-		if (event.getHurtEntity().getHealth() <= event.getDamage()) {
+		if ((((Damageable)event.getHurtEntity()).getHealth() - event.getDamage()) <= 0D) {
 			if (event.getHurtPlayer() == null) {
-				event.getHurtEntity().setHealth(0); //Instantly kill mob
+				event.getHurtEntity().setHealth(0d); //Instantly kill mob
 				return;
 			}
 
