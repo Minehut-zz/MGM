@@ -1,6 +1,6 @@
 package com.minehut.mgm.game;
 
-import com.minehut.commons.common.chat.F;
+import com.minehut.mgm.util.F;
 import com.minehut.mgm.game.games.DTW;
 import com.minehut.mgm.match.Match;
 import org.jdom2.Document;

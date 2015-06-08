@@ -1,7 +1,7 @@
 package com.minehut.mgm;
 
 import com.minehut.commons.common.chat.F;
-import com.minehut.mgm.command.CycleCommand;
+import com.minehut.mgm.command.*;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -29,6 +29,10 @@ public class MGM extends JavaPlugin {
 
     private void registerCommands() {
         new CycleCommand(this);
+        new EndCommand(this);
+        new StartCommand(this);
+        new PauseCommand(this);
+        new ResumeCommand(this);
     }
 
     public static MGM getInstance() {

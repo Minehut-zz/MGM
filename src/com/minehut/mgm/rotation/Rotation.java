@@ -31,7 +31,7 @@ public class Rotation {
     private File repo;
 
     public Rotation() throws RotationLoadException {
-        this.rotationFile = new File("/Users/luke/minehut/mgm/rotation.txt");
+        this.rotationFile = new File("/home/dev_env/mgm/rotation.txt");
 
         try {
             refreshRepo();
@@ -47,7 +47,7 @@ public class Rotation {
      */
     public void refreshRepo() throws IOException, RotationLoadException {
         loaded = new ArrayList<>();
-        this.repo = new File("/Users/luke/minehut/mgm/maps");
+        this.repo = new File("/home/dev_env/mgm/maps");
         if (!repo.exists()) {
             F.log("maps folder doesn't exist");
             repo.mkdir();

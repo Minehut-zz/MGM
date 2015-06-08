@@ -1,7 +1,14 @@
 package com.minehut.mgm.game;
 
-import com.minehut.commons.common.chat.F;
+import com.minehut.mgm.module.mapperModules.destroyableBreakManager.DestroyableBreakManagerModule;
+import com.minehut.mgm.module.mapperModules.region.RegionBuilder;
+import com.minehut.mgm.util.F;
 import com.minehut.mgm.MGM;
+import com.minehut.mgm.game.coreModules.peace.PeaceModule;
+import com.minehut.mgm.game.coreModules.postgame.PostgameModule;
+import com.minehut.mgm.game.coreModules.pregame.PregameModule;
+import com.minehut.mgm.game.coreModules.teamManager.TeamManagerModule;
+import com.minehut.mgm.game.coreModules.wrapper.WrapperModule;
 import com.minehut.mgm.match.Match;
 import com.minehut.mgm.module.Module;
 import com.minehut.mgm.module.ModuleBuilder;
@@ -30,21 +37,33 @@ public abstract class Game implements Listener {
     }
 
     public void loadModules() {
-        /* Build Modules */
+
+        /* Build Mapper Modules */
         for (ModuleBuilder moduleBuilder : builders) {
-            for (Module module : moduleBuilder.load(match)) {
-                if (module != null) {
-                    this.modules.add(module);
-                    F.log("Added module");
+
+            ArrayList<Module> result = moduleBuilder.load(match);
+            if(result != null) {
+                for (Module module : result) {
+                    if (module != null) {
+                        this.modules.add(module);
+                    }
                 }
             }
         }
 
+        /* Build Core Modules */
+        this.modules.add(new PregameModule());
+        this.modules.add(new TeamManagerModule());
+        this.modules.add(new PeaceModule());
+        this.modules.add(new PostgameModule());
+        this.modules.add(new WrapperModule());
+        this.modules.add(new DestroyableBreakManagerModule());
+
         /* Register Module Listeners */
         for (Module module : this.modules) {
             MGM.getInstance().getServer().getPluginManager().registerEvents(module, MGM.getInstance());
-            F.log("registered listener");
         }
+
     }
 
     public <T extends Module> ArrayList<T> getModules(Class<T> clazz) {

@@ -51,7 +51,7 @@ public class GameHandler {
         this.match.getGame().defineUsableModules();
         this.match.getGame().loadModules();
 
-        MGM.getInstance().getLogger().info(this.match.getGame().getModules().size() + " modules loaded.");
+        MGM.getInstance().getLogger().info(this.match.getGame().getModules().size() + " Modules loaded.");
         Bukkit.getServer().getPluginManager().callEvent(new CycleCompleteEvent(match));
 
         /* Prep for next cycle */
@@ -71,6 +71,22 @@ public class GameHandler {
         }
 
 
+    }
+
+    public static GameHandler getHandler() {
+        return handler;
+    }
+
+    public Rotation getRotation() {
+        return rotation;
+    }
+
+    public Cycle getCycle() {
+        return cycle;
+    }
+
+    public boolean isGlobalMute() {
+        return globalMute;
     }
 
     public Match getMatch() {

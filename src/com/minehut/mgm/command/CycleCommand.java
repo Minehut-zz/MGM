@@ -3,6 +3,8 @@ package com.minehut.mgm.command;
 import com.minehut.core.command.Command;
 import com.minehut.core.player.Rank;
 import com.minehut.mgm.MGM;
+import com.minehut.mgm.util.C;
+import com.minehut.mgm.util.F;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,7 +22,7 @@ public class CycleCommand extends Command {
 
     @Override
     public boolean call(Player player, ArrayList<String> arrayList) {
-        Bukkit.getServer().broadcastMessage("Cycling maps");
+        F.log(C.red + C.bold + player.getName() + C.white + " has cycled maps");
         MGM.getInstance().getGameHandler().cycleAndMakeMatch();
 
         return false;

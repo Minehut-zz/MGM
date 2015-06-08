@@ -1,6 +1,5 @@
 package com.minehut.mgm.match;
 
-import com.minehut.commons.common.chat.F;
 import com.minehut.mgm.MGM;
 import com.minehut.mgm.game.Game;
 import com.minehut.mgm.game.GameFactory;
@@ -36,8 +35,12 @@ public class Match {
             e.printStackTrace();
         }
         this.game = GameFactory.createGame(this.document, this);
-        this.state = MatchState.WAITING;
+        this.state = MatchState.STARTING;
         this.loadedMap = map;
+    }
+
+    public void setState(MatchState state) {
+        this.state = state;
     }
 
     public Game getGame() {

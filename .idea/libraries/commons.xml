@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="commons">
     <CLASSES>
-      <root url="jar://$USER_HOME$/minehut/output/plugins/commons.jar!/" />
       <root url="jar://$USER_HOME$/minehut/mgm/plugins/core.jar!/" />
+      <root url="jar://$USER_HOME$/minehut/output/plugins/commons.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
