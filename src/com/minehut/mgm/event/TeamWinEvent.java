@@ -1,7 +1,7 @@
 package com.minehut.mgm.event;
 
 import com.minehut.mgm.match.Match;
-import com.minehut.mgm.module.mapperModules.team.TeamModule;
+import com.minehut.mgm.module.modules.team.TeamModule;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 

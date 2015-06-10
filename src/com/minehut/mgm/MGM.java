@@ -2,6 +2,7 @@ package com.minehut.mgm;
 
 import com.minehut.commons.common.chat.F;
 import com.minehut.mgm.command.*;
+import com.minehut.status.Status;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -25,6 +26,9 @@ public class MGM extends JavaPlugin {
             F.log("failed to initiate game handler");
             e.printStackTrace();
         }
+
+        /* Status */
+        Status.getStatus().startStatusUpload("dev", "dev", "echo", "MGM Testing");
     }
 
     private void registerCommands() {
@@ -32,7 +36,8 @@ public class MGM extends JavaPlugin {
         new EndCommand(this);
         new StartCommand(this);
         new PauseCommand(this);
-        new ResumeCommand(this);
+        new JoinCommand(this);
+        new LeaveCommand(this);
     }
 
     public static MGM getInstance() {

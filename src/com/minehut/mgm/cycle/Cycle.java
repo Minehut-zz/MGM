@@ -27,6 +27,8 @@ public class Cycle implements Runnable {
         GenerateMap.copyWorldFromRepository(map.getFolder(), uuid);
         World world = new WorldCreator("matches/" + uuid.toString()).generator(new NullChunkGenerator()).createWorld();
         world.setPVP(true);
+        world.setGameRuleValue("doMobSpawning", "false");
+        world.setGameRuleValue("doDaylightCycle", "false");
         handler.setMatchWorld(world);
         handler.setMatchFile(new File("matches/" + uuid.toString() + "/"));
     }

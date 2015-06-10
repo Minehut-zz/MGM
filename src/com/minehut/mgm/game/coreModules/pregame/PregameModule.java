@@ -50,7 +50,7 @@ public class PregameModule implements Module {
         unload();
     }
 
-    public boolean getPaused() {
+    public boolean isPaused() {
         return paused;
     }
 

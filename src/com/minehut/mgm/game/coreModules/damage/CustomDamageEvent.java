@@ -3,6 +3,7 @@ package com.minehut.mgm.game.coreModules.damage;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -24,6 +25,8 @@ public class CustomDamageEvent extends Event implements Cancellable {
 	private Player damagerPlayer;
 	private Player hurtPlayer;
 
+	private TNTPrimed tnt;
+
 	private LivingEntity damagerEntity;
 	private LivingEntity hurtEntity;
 
@@ -38,6 +41,8 @@ public class CustomDamageEvent extends Event implements Cancellable {
 		this.eventCause = eventCause;
 		this.cause = cause;
 
+		this.tnt = null;
+
 		this.hurtEntity = hurtEntity;
 		if ((this.hurtEntity != null) && ((this.hurtEntity instanceof Player))) {
 			this.hurtPlayer = ((Player) hurtEntity);
@@ -47,6 +52,30 @@ public class CustomDamageEvent extends Event implements Cancellable {
 		if ((this.damagerEntity != null) && ((this.damagerEntity instanceof Player))) {
 			this.damagerPlayer = ((Player) damagerEntity);
 		}
+
+		this.projectile = projectile;
+
+		this.knockback = knockback;
+		this.ignoreArmor = ignoreArmor;
+
+		if (this.eventCause == EntityDamageEvent.DamageCause.FALL) {
+			this.ignoreArmor = true;
+		}
+	}
+
+	public CustomDamageEvent(LivingEntity hurtEntity, TNTPrimed tnt, Projectile projectile, EntityDamageEvent.DamageCause eventCause, double damage, boolean knockback, boolean ignoreArmor, String cause)
+	{
+		this.damage = damage;
+		this.eventCause = eventCause;
+		this.cause = cause;
+
+		this.hurtEntity = hurtEntity;
+		if ((this.hurtEntity != null) && ((this.hurtEntity instanceof Player))) {
+			this.hurtPlayer = ((Player) hurtEntity);
+		}
+
+		this.damagerEntity = null;
+		this.tnt = tnt;
 
 		this.projectile = projectile;
 
@@ -150,6 +179,9 @@ public class CustomDamageEvent extends Event implements Cancellable {
 		this.knockback = knockback;
 	}
 
+	public TNTPrimed getTnt() {
+		return tnt;
+	}
 
 	//************************************************************//
 

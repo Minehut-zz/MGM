@@ -2,12 +2,14 @@ package com.minehut.mgm.util;
 
 import com.minehut.commons.common.chat.F;
 import com.minehut.mgm.GameHandler;
-import com.minehut.mgm.match.Match;
 import com.minehut.mgm.module.Module;
-import com.minehut.mgm.module.mapperModules.team.TeamModule;
+import com.minehut.mgm.module.modules.team.TeamModule;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
@@ -78,6 +80,40 @@ public class TeamUtils {
             if (team != null) return team.getColor();
             else return ChatColor.DARK_AQUA;
         } else return ChatColor.DARK_AQUA;
+    }
+
+    public static void setupSpectator(Player player) {
+        PlayerUtils.resetPlayer(player);
+
+        player.setAllowFlight(true);
+        player.setFlying(true);
+
+        player.getInventory().setItem(0, new ItemStack(Material.COMPASS));
+
+        for (Player player1 : Bukkit.getServer().getOnlinePlayers()) {
+            TeamModule team = TeamUtils.getTeamByPlayer(player1);
+
+            if (team != null && !team.isSpectator()) {
+                player1.hidePlayer(player);
+                F.log("Player " + player1.getName() + " now hiding Player " + player.getName());
+            } else {
+                player1.showPlayer(player);
+                F.log("Player " + player1.getName() + " was also on spectator team.");
+            }
+        }
+    }
+
+    public static boolean isSpectator(Player player) {
+        if (getSpectators().contains(player)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static void setupMatchPlayer(Player player) {
+        for (Player player1 : Bukkit.getServer().getOnlinePlayers()) {
+            player1.showPlayer(player);
+        }
     }
 
 }

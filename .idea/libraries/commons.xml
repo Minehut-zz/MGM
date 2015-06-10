@@ -3,6 +3,8 @@
     <CLASSES>
       <root url="jar://$USER_HOME$/minehut/mgm/plugins/core.jar!/" />
       <root url="jar://$USER_HOME$/minehut/output/plugins/commons.jar!/" />
+      <root url="jar://$USER_HOME$/minehut/output/plugins/ProtocolLib.jar!/" />
+      <root url="jar://$USER_HOME$/minehut/output/plugins/status.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

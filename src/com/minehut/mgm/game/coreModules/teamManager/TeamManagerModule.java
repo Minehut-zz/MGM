@@ -1,23 +1,21 @@
 package com.minehut.mgm.game.coreModules.teamManager;
 
+import com.minehut.commons.common.chat.C;
 import com.minehut.mgm.GameHandler;
 import com.minehut.mgm.MGM;
 import com.minehut.mgm.event.CycleCompleteEvent;
 import com.minehut.mgm.event.PlayerChangeTeamEvent;
-import com.minehut.mgm.match.Match;
+import com.minehut.mgm.game.coreModules.damage.CustomDamageEvent;
 import com.minehut.mgm.module.Module;
-import com.minehut.mgm.module.mapperModules.team.TeamModule;
-import com.minehut.mgm.util.PlayerUtils;
+import com.minehut.mgm.module.modules.team.TeamModule;
 import com.minehut.mgm.util.TeamUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.inventory.ItemStack;
 
 /**
  * Created by luke on 6/1/15.
@@ -33,25 +31,25 @@ public class TeamManagerModule implements Module {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        PlayerUtils.resetPlayer(player);
-
         TeamModule spectators = TeamUtils.getSpectators();
-        spectators.add(player);
-        player.teleport(spectators.getRandomSpawn());
+        spectators.add(event.getPlayer());
+        event.getPlayer().teleport(spectators.getRandomSpawn());
 
-        event.getPlayer().getInventory().setItem(0, new ItemStack(Material.COMPASS));
+        TeamUtils.setupSpectator(event.getPlayer());
+
+        if (GameHandler.getHandler().getMatch().isRunning()) {
+            event.getPlayer().sendMessage("Type " + C.aqua + "/join " + C.white + "to join the match");
+        }
     }
 
     @EventHandler
     public void onCycleComplete(CycleCompleteEvent event) {
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-
             TeamModule spectators = TeamUtils.getSpectators();
             spectators.add(player);
             player.teleport(spectators.getRandomSpawn());
 
-            player.getInventory().setItem(0, new ItemStack(Material.COMPASS));
+            TeamUtils.setupSpectator(player);
         }
     }
 
@@ -65,6 +63,22 @@ public class TeamManagerModule implements Module {
     public void onPlayerChangeTeam(PlayerChangeTeamEvent event) {
         if (event.getNewTeam() != null && !event.getNewTeam().isSpectator() && GameHandler.getGameHandler().getMatch().isRunning()) {
             Bukkit.dispatchCommand(event.getPlayer(), "match");
+        }
+    }
+
+    @EventHandler
+    public void onFriendlyFire(CustomDamageEvent event) {
+        if (event.getDamagerPlayer() != null && event.getHurtPlayer() != null) {
+
+            // Allow self-hit
+            if(event.getDamagerPlayer() == event.getHurtPlayer()) return;
+
+            TeamModule damagerTeam = TeamUtils.getTeamByPlayer(event.getDamagerPlayer());
+            TeamModule hurtTeam = TeamUtils.getTeamByPlayer(event.getHurtPlayer());
+
+            if (damagerTeam == hurtTeam) {
+                event.setCancelled(true);
+            }
         }
     }
 

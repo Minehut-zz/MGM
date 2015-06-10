@@ -48,7 +48,6 @@ public class GameHandler {
         if (match != null) match.getGame().unregisterModules();
 
         this.match = new Match(cycle.getUuid(), cycle.getMap());
-        this.match.getGame().defineUsableModules();
         this.match.getGame().loadModules();
 
         MGM.getInstance().getLogger().info(this.match.getGame().getModules().size() + " Modules loaded.");

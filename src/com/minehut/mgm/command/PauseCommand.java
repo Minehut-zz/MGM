@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class PauseCommand extends Command {
 
     public PauseCommand(JavaPlugin plugin) {
-        super(plugin, "pause", Rank.regular);
+        super(plugin, "p", Rank.regular);
     }
 
     @Override
@@ -28,13 +28,24 @@ public class PauseCommand extends Command {
 
         MatchState matchState = GameHandler.getGameHandler().getMatch().getState();
 
+        boolean paused = false;
+
         if (matchState == MatchState.STARTING) {
-            ((PregameModule) GameHandler.getHandler().getMatch().getGame().getModule(PregameModule.class)).setPaused(true);
+            paused = ((PregameModule) GameHandler.getHandler().getMatch().getGame().getModule(PregameModule.class)).isPaused();
+
+            ((PregameModule) GameHandler.getHandler().getMatch().getGame().getModule(PregameModule.class)).setPaused(!paused);
         } else if (matchState == MatchState.WAITING) {
-            ((PostgameModule) GameHandler.getHandler().getMatch().getGame().getModule(PostgameModule.class)).setPaused(true);
+            paused = ((PostgameModule) GameHandler.getHandler().getMatch().getGame().getModule(PostgameModule.class)).isPaused();
+
+            ((PostgameModule) GameHandler.getHandler().getMatch().getGame().getModule(PostgameModule.class)).setPaused(!paused);
         }
 
-        F.broadcast(C.red + C.bold + player.getName() + C.white + " has paused the timer");
+        if (!paused) { //Inveres since it was changed.
+            F.broadcast(C.red + C.bold + player.getName() + C.white + " has paused the timer");
+        } else {
+            F.broadcast(C.red + C.bold + player.getName() + C.white + " has resumed the timer");
+        }
+
         return false;
     }
 }

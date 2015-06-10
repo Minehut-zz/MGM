@@ -22,7 +22,7 @@ public class CycleCommand extends Command {
 
     @Override
     public boolean call(Player player, ArrayList<String> arrayList) {
-        F.log(C.red + C.bold + player.getName() + C.white + " has cycled maps");
+        F.broadcast(C.red + C.bold + player.getName() + C.white + " has cycled maps");
         MGM.getInstance().getGameHandler().cycleAndMakeMatch();
 
         return false;

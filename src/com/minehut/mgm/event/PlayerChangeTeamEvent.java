@@ -1,6 +1,6 @@
 package com.minehut.mgm.event;
 
-import com.minehut.mgm.module.mapperModules.team.TeamModule;
+import com.minehut.mgm.module.modules.team.TeamModule;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;

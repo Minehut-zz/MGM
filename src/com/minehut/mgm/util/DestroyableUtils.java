@@ -1,8 +1,8 @@
 package com.minehut.mgm.util;
 
 import com.minehut.mgm.GameHandler;
-import com.minehut.mgm.module.mapperModules.team.TeamModule;
-import com.minehut.mgm.module.mapperModules.destroyable.Destroyable;
+import com.minehut.mgm.module.modules.team.TeamModule;
+import com.minehut.mgm.module.modules.destroyable.Destroyable;
 
 import java.util.ArrayList;
 

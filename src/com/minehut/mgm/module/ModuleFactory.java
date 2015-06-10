@@ -2,8 +2,8 @@ package com.minehut.mgm.module;
 
 import com.minehut.mgm.match.Match;
 import com.minehut.mgm.game.coreModules.damage.DamageManagerModuleBuilder;
-import com.minehut.mgm.module.mapperModules.kit.KitBuilder;
-import com.minehut.mgm.module.mapperModules.team.TeamModuleBuilder;
+import com.minehut.mgm.module.modules.kit.KitBuilder;
+import com.minehut.mgm.module.modules.team.TeamModuleBuilder;
 import org.bukkit.Bukkit;
 
 import java.lang.reflect.InvocationTargetException;
@@ -34,8 +34,8 @@ public class ModuleFactory {
         }
 
 //        for (ModuleBuilder moduleBuilder : builderClasses) {
-//            ArrayList<Module> mapperModules = moduleBuilder.load(match);
-//            for (Module module : mapperModules) {
+//            ArrayList<Module> modules = moduleBuilder.load(match);
+//            for (Module module : modules) {
 //                if (module != null) {
 //                    match.addModule(module);
 //                }

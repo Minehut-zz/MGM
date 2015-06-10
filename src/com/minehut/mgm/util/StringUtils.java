@@ -98,16 +98,6 @@ public class StringUtils {
         return string.trim().toUpperCase().replaceAll(" ", "_");
     }
 
-    /**
-     * @author OvercastNetwork
-     * @author MonsieurApple
-     * @author Anxuiz
-     * @author Ramsey
-     *
-     * https://github.com/rmsy/Whitelister
-     *
-     */
-
     /** Repeat character 'c' n times. */
     public static String repeat(String c, int n) {
         assert n >= 0;

@@ -1,19 +1,17 @@
 package com.minehut.mgm.game.coreModules.wrapper;
 
 import com.minehut.mgm.GameHandler;
-import com.minehut.mgm.MGM;
 import com.minehut.mgm.event.GameEndEvent;
 import com.minehut.mgm.event.GameStartEvent;
-import com.minehut.mgm.game.Game;
 import com.minehut.mgm.game.coreModules.peace.PeaceModule;
 import com.minehut.mgm.game.coreModules.postgame.PostgameModule;
-import com.minehut.mgm.match.Match;
 import com.minehut.mgm.match.MatchState;
 import com.minehut.mgm.module.Module;
-import com.minehut.mgm.module.mapperModules.team.TeamModule;
+import com.minehut.mgm.module.modules.team.TeamModule;
 import com.minehut.mgm.util.PlayerUtils;
 import com.minehut.mgm.util.TeamUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
@@ -33,6 +31,7 @@ public class WrapperModule implements Module {
 
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
             PlayerUtils.resetPlayer(player);
+            player.setGameMode(GameMode.SURVIVAL);
 
             TeamModule team = TeamUtils.getTeamByPlayer(player); //Team Selector
             if (team == null || team.isSpectator()) {
@@ -42,6 +41,8 @@ public class WrapperModule implements Module {
 
             player.teleport(team.getRandomSpawn());
             team.getKit().apply(player);
+
+            TeamUtils.setupMatchPlayer(player);
         }
     }
 
@@ -51,6 +52,7 @@ public class WrapperModule implements Module {
 
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
             PlayerUtils.resetPlayer(player);
+            player.setAllowFlight(true);
             player.setFlying(true);
         }
 

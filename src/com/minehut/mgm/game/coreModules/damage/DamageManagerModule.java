@@ -9,6 +9,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.util.Vector;
@@ -36,9 +37,17 @@ public class DamageManagerModule implements Module {
 		double damage = event.getFinalDamage();
 		LivingEntity damagerEntity = null;
 
+		TNTPrimed tnt = null;
+
 		// Check to see if there is a damager
 		if (event instanceof EntityDamageByEntityEvent) {
-			if (((EntityDamageByEntityEvent) event).getDamager() != null && ((EntityDamageByEntityEvent) event).getDamager() instanceof LivingEntity) {
+
+			if (((EntityDamageByEntityEvent) event).getDamager() instanceof TNTPrimed) {
+				tnt = (TNTPrimed) ((EntityDamageByEntityEvent) event).getDamager();
+			}
+
+			else if (((EntityDamageByEntityEvent) event).getDamager() != null
+					&& !(((EntityDamageByEntityEvent) event).getDamager() instanceof Arrow)) {
 				damagerEntity = (LivingEntity) ((EntityDamageByEntityEvent) event).getDamager();
 			}
 		}
@@ -50,7 +59,12 @@ public class DamageManagerModule implements Module {
 			}
 		}
 
-		CustomDamageEvent damageEvent = new CustomDamageEvent(hurtEntity, damagerEntity, projectile, damageCause, damage, true, false, null);
+		CustomDamageEvent damageEvent;
+		if(tnt == null) {
+			damageEvent = new CustomDamageEvent(hurtEntity, damagerEntity, projectile, damageCause, damage, true, false, null);
+		} else {
+			damageEvent = new CustomDamageEvent(hurtEntity, tnt, projectile, damageCause, damage, true, false, null);
+		}
 
 		MGM.getInstance().getServer().getPluginManager().callEvent(damageEvent);
 
@@ -197,6 +211,6 @@ public class DamageManagerModule implements Module {
 
 	@Override
 	public void unload() {
-
+		HandlerList.unregisterAll(this);
 	}
 }

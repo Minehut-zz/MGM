@@ -1,7 +1,7 @@
 package com.minehut.mgm.util;
 
 import com.minehut.mgm.GameHandler;
-import com.minehut.mgm.module.mapperModules.region.Region;
+import com.minehut.mgm.module.modules.region.Region;
 
 /**
  * Created by luke on 6/7/15.
