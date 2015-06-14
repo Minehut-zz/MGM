@@ -9,6 +9,8 @@ import com.minehut.mgm.util.TeamUtils;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 
 /**
  * Created by luke on 6/8/15.
@@ -40,6 +42,26 @@ public class SafezoneModule implements Module {
                     }
                 }
             }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onBlockBreak(BlockBreakEvent event) {
+        if(event.isCancelled()) return;
+
+        if (this.region.insideRegion(event.getBlock().getLocation())) {
+            event.setCancelled(true);
+            F.warning(event.getPlayer(), "You cannot modify a safezone");
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onBlockPlace(BlockPlaceEvent event) {
+        if(event.isCancelled()) return;
+
+        if (this.region.insideRegion(event.getBlock().getLocation())) {
+            event.setCancelled(true);
+            F.warning(event.getPlayer(), "You cannot modify a safezone");
         }
     }
 }

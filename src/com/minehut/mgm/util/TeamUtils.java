@@ -1,7 +1,9 @@
 package com.minehut.mgm.util;
 
 import com.minehut.commons.common.chat.F;
+import com.minehut.commons.common.items.ItemStackFactory;
 import com.minehut.mgm.GameHandler;
+import com.minehut.mgm.game.coreModules.teamPicker.TeamPickerModule;
 import com.minehut.mgm.module.Module;
 import com.minehut.mgm.module.modules.team.TeamModule;
 import org.bukkit.Bukkit;
@@ -88,17 +90,20 @@ public class TeamUtils {
         player.setAllowFlight(true);
         player.setFlying(true);
 
+        player.getInventory().setChestplate(new ItemStack(Material.CHAINMAIL_CHESTPLATE));
+
         player.getInventory().setItem(0, new ItemStack(Material.COMPASS));
+        player.getInventory().setItem(2, ItemStackFactory.createItem(Material.LEATHER_CHESTPLATE, C.aqua + C.bold + "Team Picker"));
+
+        player.setPlayerListName(C.aqua + player.getName());
 
         for (Player player1 : Bukkit.getServer().getOnlinePlayers()) {
             TeamModule team = TeamUtils.getTeamByPlayer(player1);
 
             if (team != null && !team.isSpectator()) {
                 player1.hidePlayer(player);
-                F.log("Player " + player1.getName() + " now hiding Player " + player.getName());
             } else {
                 player1.showPlayer(player);
-                F.log("Player " + player1.getName() + " was also on spectator team.");
             }
         }
     }

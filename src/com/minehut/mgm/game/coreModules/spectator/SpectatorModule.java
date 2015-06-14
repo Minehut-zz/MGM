@@ -8,6 +8,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 
 /**
@@ -42,6 +43,13 @@ public class SpectatorModule implements Module {
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
+        if (TeamUtils.isSpectator(event.getPlayer())) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onDropItem(PlayerDropItemEvent event) {
         if (TeamUtils.isSpectator(event.getPlayer())) {
             event.setCancelled(true);
         }

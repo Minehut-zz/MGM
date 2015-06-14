@@ -15,35 +15,41 @@ import java.util.ArrayList;
  */
 public class ItemDropModule implements Module {
     private ArrayList<ItemDropInfo> allowedDrops;
-    private boolean allowAll;
+    private DropMode dropMode;
 
-    public ItemDropModule(ArrayList<ItemDropInfo> allowedDrops) {
+    public ItemDropModule(ArrayList<ItemDropInfo> allowedDrops, DropMode dropMode) {
         this.allowedDrops = allowedDrops;
-        this.allowAll = false;
+        this.dropMode = dropMode;
     }
 
-    public ItemDropModule(boolean allowAll) {
-        this.allowAll = allowAll;
-        this.allowedDrops = new ArrayList<>();
+    public enum DropMode {
+        DENY,
+        ALLOW,
+        ALL;
     }
 
     @EventHandler
     public void onCustomDeath(CustomDeathEvent event) {
         if (event.getDeadPlayer() != null) {
             for (ItemStack item : event.getDeadPlayer().getInventory().getContents()) {
-                if (item != null && item.getType() != null && allowDrop(item)) {
+                if (item != null && item.getType() != null && canDrop(item)) {
                     dropDeadPlayerItem(item, event.getDeadPlayer());
                 }
             }
         }
     }
 
-    public boolean allowDrop(ItemStack itemStack) {
-        if(allowAll) return true;
+    public boolean canDrop(ItemStack itemStack) {
+        if(this.dropMode == DropMode.ALL) return true;
 
         for (ItemDropInfo itemDropInfo : this.allowedDrops) {
-            if (itemDropInfo.allowDrop(itemStack)) {
-               return true;
+            if (itemDropInfo.isMatch(itemStack)) {
+                if (this.dropMode == DropMode.ALLOW) {
+                    return true;
+                }
+                else if (this.dropMode == DropMode.DENY) {
+                    return false;
+                }
             }
         }
 
@@ -52,22 +58,6 @@ public class ItemDropModule implements Module {
 
     public void dropDeadPlayerItem(ItemStack itemStack, Player player) {
         player.getLocation().getWorld().dropItemNaturally(player.getLocation(), itemStack);
-    }
-
-    @EventHandler
-    public void onItemSpawn(ItemSpawnEvent event) {
-        if(allowAll) return;
-
-        boolean allow = false;
-        for (ItemDropInfo itemDropInfo : this.allowedDrops) {
-            if (itemDropInfo.allowDrop(event.getEntity().getItemStack())) {
-                allow = true;
-            }
-        }
-
-        if (!allow) {
-            event.setCancelled(true);
-        }
     }
 
     @Override

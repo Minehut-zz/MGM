@@ -8,6 +8,7 @@ import com.minehut.mgm.event.PlayerChangeTeamEvent;
 import com.minehut.mgm.game.coreModules.damage.CustomDamageEvent;
 import com.minehut.mgm.module.Module;
 import com.minehut.mgm.module.modules.team.TeamModule;
+import com.minehut.mgm.util.PlayerUtils;
 import com.minehut.mgm.util.TeamUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -43,6 +44,22 @@ public class TeamManagerModule implements Module {
     }
 
     @EventHandler
+    public void onTeamChange(PlayerChangeTeamEvent event) {
+        if (GameHandler.getHandler().getMatch().isRunning()) {
+            Player player = event.getPlayer();
+            PlayerUtils.resetPlayer(player);
+            player.teleport(event.getNewTeam().getRandomSpawn());
+
+            if (!event.getNewTeam().isSpectator()) {
+                event.getNewTeam().getKit().apply(player);
+                TeamUtils.setupMatchPlayer(player);
+            } else {
+                TeamUtils.setupSpectator(player);
+            }
+        }
+    }
+
+    @EventHandler
     public void onCycleComplete(CycleCompleteEvent event) {
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
             TeamModule spectators = TeamUtils.getSpectators();
@@ -59,12 +76,12 @@ public class TeamManagerModule implements Module {
         removePlayer(event.getPlayer());
     }
 
-    @EventHandler
-    public void onPlayerChangeTeam(PlayerChangeTeamEvent event) {
-        if (event.getNewTeam() != null && !event.getNewTeam().isSpectator() && GameHandler.getGameHandler().getMatch().isRunning()) {
-            Bukkit.dispatchCommand(event.getPlayer(), "match");
-        }
-    }
+//    @EventHandler
+//    public void onPlayerChangeTeam(PlayerChangeTeamEvent event) {
+//        if (event.getNewTeam() != null && !event.getNewTeam().isSpectator() && GameHandler.getGameHandler().getMatch().isRunning()) {
+//            Bukkit.dispatchCommand(event.getPlayer(), "match");
+//        }
+//    }
 
     @EventHandler
     public void onFriendlyFire(CustomDamageEvent event) {

@@ -1,11 +1,11 @@
 package com.minehut.mgm.module.modules.spawn;
 
+import com.minehut.commons.common.chat.F;
 import com.minehut.mgm.GameHandler;
 import com.minehut.mgm.match.Match;
 import com.minehut.mgm.module.Module;
 import com.minehut.mgm.module.ModuleBuilder;
 import com.minehut.mgm.module.modules.team.TeamModule;
-import com.minehut.mgm.util.F;
 import com.minehut.mgm.util.LocationUtils;
 import com.minehut.mgm.util.TeamUtils;
 import org.bukkit.Location;

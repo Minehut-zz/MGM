@@ -14,14 +14,12 @@ public class PlayerChangeTeamEvent extends Event implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
 
     private final Player player;
-    private final boolean forced;
     private TeamModule newTeam;
     private TeamModule oldTeam;
     private boolean cancelled;
 
-    public PlayerChangeTeamEvent(Player player, boolean forced, TeamModule newTeam, TeamModule oldTeam) {
+    public PlayerChangeTeamEvent(Player player, TeamModule newTeam, TeamModule oldTeam) {
         this.player = player;
-        this.forced = forced;
         this.newTeam = newTeam;
         this.oldTeam = oldTeam;
     }

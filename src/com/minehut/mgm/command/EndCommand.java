@@ -1,13 +1,12 @@
 package com.minehut.mgm.command;
 
+import com.minehut.commons.common.chat.F;
 import com.minehut.core.command.Command;
 import com.minehut.core.player.Rank;
 import com.minehut.mgm.GameHandler;
-import com.minehut.mgm.MGM;
 import com.minehut.mgm.event.GameEndEvent;
 import com.minehut.mgm.match.MatchState;
 import com.minehut.mgm.util.C;
-import com.minehut.mgm.util.F;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,7 +19,7 @@ import java.util.ArrayList;
 public class EndCommand extends Command {
 
     public EndCommand(JavaPlugin plugin) {
-        super(plugin, "end", Rank.regular);
+        super(plugin, "end", Rank.Mod);
     }
 
     @Override

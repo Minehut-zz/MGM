@@ -1,10 +1,12 @@
 package com.minehut.mgm.module.modules.team;
 
 import com.minehut.commons.common.sound.S;
+import com.minehut.mgm.event.PlayerChangeTeamEvent;
 import com.minehut.mgm.util.C;
 import com.minehut.mgm.module.Module;
 import com.minehut.mgm.module.modules.kit.Kit;
 import com.minehut.mgm.util.TeamUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -30,6 +32,8 @@ public class TeamModule implements Module {
     private String id;
     private boolean spectator;
 
+    private int maxSize;
+
     public TeamModule(String name, String id, ChatColor color, boolean spectator) {
         this.name = name;
         this.id = id;
@@ -38,6 +42,8 @@ public class TeamModule implements Module {
 
         this.players = new ArrayList<>();
         this.spawns = new ArrayList<>();
+
+        this.maxSize = 50;
     }
 
     public void addSpawn(Location location) {
@@ -69,16 +75,17 @@ public class TeamModule implements Module {
     }
 
     public void add(Player player) {
-
         TeamModule oldTeam = TeamUtils.getTeamByPlayer(player);
         if (oldTeam != null) {
             oldTeam.remove(player);
         }
 
         this.players.add(player);
-        player.setDisplayName(this.color + player.getName());
+        player.setDisplayName(player.getName());
 
-        S.playSound(player, Sound.NOTE_STICKS);
+        Bukkit.getServer().getPluginManager().callEvent(new PlayerChangeTeamEvent(player, this, oldTeam));
+
+        player.playSound(player.getLocation(), Sound.CLICK, 1, 2);
         player.sendMessage(C.white + "You have joined " + this.color + this.name);
     }
 
@@ -136,6 +143,10 @@ public class TeamModule implements Module {
 
     public String getId() {
         return id;
+    }
+
+    public int getMaxSize() {
+        return maxSize;
     }
 
     @Override

@@ -29,17 +29,8 @@ public class JoinCommand extends Command {
             return true;
         }
 
-        PlayerUtils.resetPlayer(player);
-
         TeamModule team = TeamUtils.getTeamWithFewestPlayers();
         team.add(player);
-
-        if (GameHandler.getHandler().getMatch().isRunning()) {
-            player.teleport(team.getRandomSpawn());
-            team.getKit().apply(player);
-        }
-
-        TeamUtils.setupMatchPlayer(player);
 
         return false;
     }

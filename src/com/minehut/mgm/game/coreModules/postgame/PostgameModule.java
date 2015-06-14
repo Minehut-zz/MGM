@@ -1,12 +1,11 @@
 package com.minehut.mgm.game.coreModules.postgame;
 
+import com.minehut.commons.common.chat.F;
 import com.minehut.mgm.GameHandler;
 import com.minehut.mgm.MGM;
-import com.minehut.mgm.event.GameStartEvent;
 import com.minehut.mgm.game.coreModules.pregame.PregameModule;
 import com.minehut.mgm.module.Module;
 import com.minehut.mgm.util.C;
-import com.minehut.mgm.util.F;
 import org.bukkit.Bukkit;
 
 /**
@@ -33,7 +32,7 @@ public class PostgameModule implements Module {
                 if(!paused) {
                     if (timeLeft > 0) {
 
-                        if (timeLeft < 5) {
+                        if (timeLeft <= 5) {
                             F.broadcast("Cycling to " + C.aqua + MGM.getInstance().getGameHandler().getRotation().getNext().getName() + C.white + " in " + C.red + timeLeft + C.white + " seconds.");
                         } else if (timeLeft <= 60 && (timeLeft % 10 == 0)) {
                             F.broadcast("Cycling to " + C.aqua + MGM.getInstance().getGameHandler().getRotation().getNext().getName() + C.white + " in " + C.red + timeLeft + C.white + " seconds.");

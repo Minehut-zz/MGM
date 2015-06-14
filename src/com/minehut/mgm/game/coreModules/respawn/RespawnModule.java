@@ -2,6 +2,7 @@ package com.minehut.mgm.game.coreModules.respawn;
 
 import com.minehut.commons.common.color.ColorConverter;
 import com.minehut.commons.common.sound.S;
+import com.minehut.mgm.GameHandler;
 import com.minehut.mgm.game.coreModules.damage.CustomDeathEvent;
 import com.minehut.mgm.game.coreModules.damage.CustomRespawnEvent;
 import com.minehut.mgm.module.Module;
@@ -67,7 +68,12 @@ public class RespawnModule implements Module {
 
         event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 30, 10));
 
-        team.getKit().apply(event.getPlayer());
+        if (!GameHandler.getHandler().getMatch().isRunning()) {
+            event.getPlayer().setAllowFlight(true);
+            event.getPlayer().setFlying(true);
+        } else {
+            team.getKit().apply(event.getPlayer());
+        }
     }
 
 

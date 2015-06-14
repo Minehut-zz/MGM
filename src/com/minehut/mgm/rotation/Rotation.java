@@ -60,18 +60,11 @@ public class Rotation {
                     try {
                         Document xml = DomUtils.parse(new File(map.getPath() + "/map.xml"));
                         String name = xml.getRootElement().getChild("name").getText();
-                        String version = xml.getRootElement().getChild("version").getText();
                         String objective = xml.getRootElement().getChild("objective").getText();
                         List<UUID> authors = new ArrayList<>();
                         for (Element authorsElement : xml.getRootElement().getChildren("authors")) {
                             for (Element author : authorsElement.getChildren()) {
                                 authors.add(parseContributor(author));
-                            }
-                        }
-                        List<UUID> contributors = new ArrayList<>();
-                        for (Element contributorsElement : xml.getRootElement().getChildren("contributors")) {
-                            for (Element contributor : contributorsElement.getChildren()) {
-                                contributors.add(parseContributor(contributor));
                             }
                         }
                         List<String> rules = new ArrayList<>();
@@ -86,9 +79,10 @@ public class Rotation {
                                 maxPlayers = maxPlayers + NumUtils.parseInt(team.getAttributeValue("max"));
                             }
                         }
-                        loaded.add(new LoadedMap(name, version, objective, authors, rules, maxPlayers, map));
+                        loaded.add(new LoadedMap(name, objective, authors, rules, maxPlayers, map));
                     } catch (Exception e) {
                         Bukkit.getLogger().log(Level.WARNING, "Failed to load map at " + map.getAbsolutePath());
+                        e.printStackTrace();
 //                        if (Cardinal.getInstance().getConfig().getBoolean("displayMapLoadErrors")) {
 //                            Bukkit.getLogger().log(Level.INFO, "Showing error, this can be disabled in the config: ");
 //                            e.printStackTrace();

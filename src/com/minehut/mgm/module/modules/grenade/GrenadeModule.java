@@ -38,7 +38,7 @@ public class GrenadeModule implements Module {
             if(player.getItemInHand().getType() == Material.TNT) {
                 if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
                     TNTPrimed tnt = (TNTPrimed) player.getWorld().spawnEntity(player.getLocation(), EntityType.PRIMED_TNT);
-                    tnt.setVelocity(player.getLocation().getDirection().multiply(.8));
+                    tnt.setVelocity(player.getLocation().getDirection().multiply(1.15));
 
                     tnt.setMetadata("source", new FixedMetadataValue(MGM.getInstance(), player.getUniqueId()));
 
@@ -47,7 +47,7 @@ public class GrenadeModule implements Module {
                     player.setItemInHand(updatedItem);
                     player.updateInventory();
 
-                    player.playSound(player.getLocation(), Sound.ITEM_PICKUP, 10, 1);
+                    player.playSound(player.getEyeLocation(), Sound.ITEM_PICKUP, 10, 1);
                 }
             }
         }

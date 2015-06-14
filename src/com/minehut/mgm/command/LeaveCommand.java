@@ -30,12 +30,6 @@ public class LeaveCommand extends Command {
         TeamModule spectators = TeamUtils.getSpectators();
         spectators.add(player);
 
-        if(GameHandler.getHandler().getMatch().isRunning()) {
-            player.teleport(spectators.getRandomSpawn());
-        }
-
-        TeamUtils.setupSpectator(player);
-
         return false;
     }
 }

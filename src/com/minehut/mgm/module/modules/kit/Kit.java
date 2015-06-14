@@ -67,12 +67,11 @@ public class Kit implements Module {
     }
 
     public void apply(final Player player) {
-        if (clear || clearItems) player.getInventory().clear();
-        if (clear) {
-            for (ItemStack armor : player.getInventory().getArmorContents()) {
-                armor.setAmount(0);
-            }
+        player.getInventory().clear();
+        for (ItemStack armor : player.getInventory().getArmorContents()) {
+            armor.setAmount(0);
         }
+
         try {
             getKitByName(parent).apply(player);
         } catch (NullPointerException e) {
@@ -94,11 +93,7 @@ public class Kit implements Module {
         player.setWalkSpeed(walkSpeed);
         for (KitItem item : this.items) {
             if (item.hasSlot()) {
-                if (player.getInventory().getItem(item.getSlot()) == null || force) {
-                    player.getInventory().setItem(item.getSlot(), item.getItem());
-                } else {
-                    player.getInventory().addItem(item.getItem());
-                }
+                player.getInventory().setItem(item.getSlot(), item.getItem());
             } else {
                 player.getInventory().addItem(item.getItem());
             }

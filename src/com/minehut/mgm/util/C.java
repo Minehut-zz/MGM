@@ -88,7 +88,7 @@ public class C {
 
 	public static String warning = C.yellow + "⚠";
 
-	public static String divider = dgray + strike + "=====================================================";
+	public static String divider = aqua + strike + "=====================================================";
 
 	public static String center(String s)
 	{

@@ -60,7 +60,6 @@ public class TntTracker implements Module {
             if (tntPlaced.containsKey(location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ())) {
                 UUID player = tntPlaced.get(location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ());
                 event.getEntity().setMetadata("source", new FixedMetadataValue(MGM.getInstance(), player));
-                F.log("Player " + Bukkit.getServer().getPlayer(player).getName() + " PRIMED a tnt.");
                 tntPlaced.remove(location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ());
             }
         }
@@ -69,18 +68,15 @@ public class TntTracker implements Module {
     @EventHandler(priority = EventPriority.LOW)
     public void onCustomDamage(CustomDamageEvent event) {
         if (event.getTnt() != null) {
-                F.log("Damager was tnt");
+
                 Entity tnt = event.getTnt();
                 if (tnt.hasMetadata("source")) {
-                    F.log("tnt had source");
                     Player realDamager = Bukkit.getServer().getPlayer(getWhoPlaced(tnt));
                     if (realDamager != null) {
                         event.setDamagerEntity(realDamager);
                         event.setDamagerPlayer(realDamager);
                     }
                 }
-        } else {
-            F.log("Damage wasn't from tnt");
         }
     }
 

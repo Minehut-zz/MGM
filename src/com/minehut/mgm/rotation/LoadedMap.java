@@ -9,15 +9,14 @@ import java.util.UUID;
  */
 public class LoadedMap {
 
-    private final String name, version, objective;
+    private final String name, objective;
     private final List<UUID> authors;
     private final List<String> rules;
     private final int maxPlayers;
     private final File folder;
 
-    public LoadedMap(String name, String version, String objective, List<UUID> authors, List<String> rules, int maxPlayers, File folder) {
+    public LoadedMap(String name, String objective, List<UUID> authors, List<String> rules, int maxPlayers, File folder) {
         this.name = name;
-        this.version = version;
         this.objective = objective;
         this.authors = authors;
         this.rules = rules;
@@ -27,10 +26,6 @@ public class LoadedMap {
 
     public String getName() {
         return name;
-    }
-
-    public String getVersion() {
-        return version;
     }
 
     public String getObjective() {

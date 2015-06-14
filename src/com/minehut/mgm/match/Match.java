@@ -1,5 +1,6 @@
 package com.minehut.mgm.match;
 
+import com.minehut.commons.common.chat.F;
 import com.minehut.mgm.MGM;
 import com.minehut.mgm.game.Game;
 import com.minehut.mgm.game.GameFactory;
@@ -34,6 +35,7 @@ public class Match {
         } catch (JDOMException | IOException e) {
             e.printStackTrace();
         }
+        F.log("Building map: " + map.getName());
         this.game = GameFactory.createGame(this.document, this);
         this.state = MatchState.STARTING;
         this.loadedMap = map;

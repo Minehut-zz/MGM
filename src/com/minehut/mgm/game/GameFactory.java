@@ -1,6 +1,7 @@
 package com.minehut.mgm.game;
 
-import com.minehut.mgm.util.F;
+import com.minehut.commons.common.chat.F;
+import com.minehut.mgm.game.games.TDM;;
 import com.minehut.mgm.game.games.DTW;
 import com.minehut.mgm.match.Match;
 import org.jdom2.Document;
@@ -17,8 +18,10 @@ public class GameFactory {
     }
 
     public static Game getGame(String s, Match match) {
-        if (s.equalsIgnoreCase("dtw")) {
+        if (s.equalsIgnoreCase("DTW")) {
             return new DTW(match);
+        } else if (s.equalsIgnoreCase("TDM")) {
+            return new TDM(match);
         }
 
         F.log("Couldn't find game: " + s);

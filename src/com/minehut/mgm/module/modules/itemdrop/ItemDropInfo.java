@@ -13,7 +13,7 @@ public class ItemDropInfo {
         this.material = material;
     }
 
-    public boolean allowDrop(ItemStack itemStack) {
+    public boolean isMatch(ItemStack itemStack) {
         if (itemStack.getType() == this.material) {
             return true;
         }

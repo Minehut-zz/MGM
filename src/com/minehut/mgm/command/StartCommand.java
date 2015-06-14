@@ -1,14 +1,12 @@
 package com.minehut.mgm.command;
 
+import com.minehut.commons.common.chat.F;
 import com.minehut.core.command.Command;
 import com.minehut.core.player.Rank;
 import com.minehut.mgm.GameHandler;
-import com.minehut.mgm.event.GameEndEvent;
 import com.minehut.mgm.game.coreModules.pregame.PregameModule;
 import com.minehut.mgm.match.MatchState;
 import com.minehut.mgm.util.C;
-import com.minehut.mgm.util.F;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,7 +18,7 @@ import java.util.ArrayList;
 public class StartCommand extends Command {
 
     public StartCommand(JavaPlugin plugin) {
-        super(plugin, "start", Rank.regular);
+        super(plugin, "start", Rank.Mod);
     }
 
     @Override

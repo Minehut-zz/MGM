@@ -1,15 +1,17 @@
 package com.minehut.mgm.game;
 
 import com.minehut.mgm.game.coreModules.chat.ChatModule;
+import com.minehut.mgm.game.coreModules.damage.CustomDamageEvent;
 import com.minehut.mgm.game.coreModules.damage.DamageManagerModuleBuilder;
 import com.minehut.mgm.game.coreModules.respawn.RespawnModule;
 import com.minehut.mgm.game.coreModules.spectator.SpectatorModule;
 import com.minehut.mgm.game.coreModules.tab.TabModule;
+import com.minehut.mgm.game.coreModules.teamPicker.TeamPickerModule;
 import com.minehut.mgm.game.coreModules.timer.GameTimer;
 import com.minehut.mgm.game.coreModules.tntTracker.TntTracker;
 import com.minehut.mgm.module.modules.build.BuildModuleBuilder;
 import com.minehut.mgm.module.modules.destroyable.DestroyableBuilder;
-import com.minehut.mgm.module.modules.destroyableBreakManager.DestroyableBreakManagerModule;
+import com.minehut.mgm.module.modules.destroyable.DestroyableBreakManagerModule;
 import com.minehut.mgm.MGM;
 import com.minehut.mgm.game.coreModules.peace.PeaceModule;
 import com.minehut.mgm.game.coreModules.postgame.PostgameModule;
@@ -24,12 +26,18 @@ import com.minehut.mgm.module.modules.hunger.HungerModuleBuilder;
 import com.minehut.mgm.module.modules.instakill.InstakillModuleBuilder;
 import com.minehut.mgm.module.modules.itemdrop.ItemDropModuleBuilder;
 import com.minehut.mgm.module.modules.kit.KitBuilder;
+import com.minehut.mgm.module.modules.noLeave.NoLeaveModuleBuilder;
+import com.minehut.mgm.module.modules.noModify.NoModifyModuleBuilder;
 import com.minehut.mgm.module.modules.region.RegionBuilder;
 import com.minehut.mgm.module.modules.safezone.SafezoneModuleBuilder;
+import com.minehut.mgm.module.modules.score.ScoreModuleBuilder;
 import com.minehut.mgm.module.modules.spawn.SpawnBuilder;
+import com.minehut.mgm.module.modules.spawnProtection.SpawnProtectionModuleBuilder;
 import com.minehut.mgm.module.modules.team.TeamModuleBuilder;
 import com.minehut.mgm.module.modules.tntProtection.TntProtectionModuleBuilder;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 
 import java.util.ArrayList;
 
@@ -49,6 +57,10 @@ public abstract class Game implements Listener {
         this.builders = new ArrayList<>();
     }
 
+    public abstract void unload();
+
+    public abstract void postModulesLoaded();
+
     public void addBuilder(ModuleBuilder builder) {
         this.builders.add(builder);
     }
@@ -63,6 +75,10 @@ public abstract class Game implements Listener {
             MGM.getInstance().getServer().getPluginManager().registerEvents(module, MGM.getInstance());
         }
 
+        /* Register Game Listener*/
+        MGM.getInstance().getServer().getPluginManager().registerEvents(this, MGM.getInstance());
+
+        this.postModulesLoaded();
     }
 
     public void defineOptionalModules() {
@@ -79,6 +95,10 @@ public abstract class Game implements Listener {
         this.addBuilder(new BuildModuleBuilder());
         this.addBuilder(new GrenadeModuleBuilder());
         this.addBuilder(new TntProtectionModuleBuilder());
+        this.addBuilder(new ScoreModuleBuilder());
+        this.addBuilder(new NoLeaveModuleBuilder());
+        this.addBuilder(new NoModifyModuleBuilder());
+        this.addBuilder(new SpawnProtectionModuleBuilder());
 
         for (ModuleBuilder moduleBuilder : builders) {
 
@@ -100,13 +120,13 @@ public abstract class Game implements Listener {
         this.modules.add(new PeaceModule());
         this.modules.add(new PostgameModule());
         this.modules.add(new WrapperModule());
-        this.modules.add(new DestroyableBreakManagerModule());
         this.modules.add(new GameTimer());
         this.modules.add(new TabModule());
         this.modules.add(new RespawnModule());
         this.modules.add(new ChatModule());
         this.modules.add(new SpectatorModule());
         this.modules.add(new TntTracker());
+        this.modules.add(new TeamPickerModule());
     }
 
     public <T extends Module> ArrayList<T> getModules(Class<T> clazz) {
@@ -128,6 +148,14 @@ public abstract class Game implements Listener {
     public void unregisterModules() {
         for (Module module : this.modules) {
             module.unload();
+        }
+        this.unload();
+    }
+
+    @EventHandler
+    public void onVoidDamage(CustomDamageEvent event) {
+        if (event.getEventCause() == EntityDamageEvent.DamageCause.VOID) {
+            event.setDamage(999);
         }
     }
 
