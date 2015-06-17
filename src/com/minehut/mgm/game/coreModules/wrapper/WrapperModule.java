@@ -21,6 +21,9 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerKickEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 /**
  * Created by luke on 6/7/15.
@@ -86,6 +89,21 @@ public class WrapperModule implements Module {
         }
 
         Bukkit.getServer().getPluginManager().callEvent(new GameEndEvent(GameHandler.getGameHandler().getMatch()));
+    }
+
+    @EventHandler
+    public void onLeave(PlayerQuitEvent event) {
+        event.setQuitMessage("");
+    }
+
+    @EventHandler
+    public void onLeave(PlayerKickEvent event) {
+        event.setLeaveMessage("");
+    }
+
+    @EventHandler
+    public void onJoin(PlayerJoinEvent event) {
+        event.setJoinMessage(C.aqua + event.getPlayer().getName() + C.white + " joined the match");
     }
 
     @Override

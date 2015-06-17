@@ -4,6 +4,7 @@ import com.minehut.commons.common.chat.C;
 import com.minehut.mgm.GameHandler;
 import com.minehut.mgm.MGM;
 import com.minehut.mgm.event.CycleCompleteEvent;
+import com.minehut.mgm.event.GameStartEvent;
 import com.minehut.mgm.event.PlayerChangeTeamEvent;
 import com.minehut.mgm.game.coreModules.damage.CustomDamageEvent;
 import com.minehut.mgm.module.Module;
@@ -30,16 +31,21 @@ public class TeamManagerModule implements Module {
         HandlerList.unregisterAll(this);
     }
 
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerJoin(PlayerJoinEvent event) {
-        TeamModule spectators = TeamUtils.getSpectators();
-        spectators.add(event.getPlayer());
-        event.getPlayer().teleport(spectators.getRandomSpawn());
+        if (!GameHandler.getHandler().getMatch().isRunning()) {
+            TeamModule spectators = TeamUtils.getSpectators();
+            spectators.add(event.getPlayer());
+            event.getPlayer().teleport(spectators.getRandomSpawn());
 
-        TeamUtils.setupSpectator(event.getPlayer());
+            TeamUtils.setupSpectator(event.getPlayer());
+        } else {
+            TeamModule currentTeam = TeamUtils.getTeamByPlayer(event.getPlayer());
 
-        if (GameHandler.getHandler().getMatch().isRunning()) {
-            event.getPlayer().sendMessage("Type " + C.aqua + "/join " + C.white + "to join the match");
+            if(currentTeam == null || currentTeam.isSpectator()) {
+                TeamModule team = TeamUtils.getTeamWithFewestPlayers();
+                team.add(event.getPlayer());
+            }
         }
     }
 
@@ -51,7 +57,6 @@ public class TeamManagerModule implements Module {
             player.teleport(event.getNewTeam().getRandomSpawn());
 
             if (!event.getNewTeam().isSpectator()) {
-                event.getNewTeam().getKit().apply(player);
                 TeamUtils.setupMatchPlayer(player);
             } else {
                 TeamUtils.setupSpectator(player);

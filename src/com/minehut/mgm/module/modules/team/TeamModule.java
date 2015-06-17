@@ -4,7 +4,6 @@ import com.minehut.commons.common.sound.S;
 import com.minehut.mgm.event.PlayerChangeTeamEvent;
 import com.minehut.mgm.util.C;
 import com.minehut.mgm.module.Module;
-import com.minehut.mgm.module.modules.kit.Kit;
 import com.minehut.mgm.util.TeamUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -25,7 +24,6 @@ import java.util.Collections;
 public class TeamModule implements Module {
     private ArrayList<Player> players;
     private ArrayList<Location> spawns;
-    private Kit kit;
 
     private String name;
     private ChatColor color;
@@ -64,14 +62,6 @@ public class TeamModule implements Module {
     @EventHandler
     public void onKick(PlayerKickEvent event) {
         this.remove(event.getPlayer());
-    }
-
-    public void setKit(Kit kit) {
-        this.kit = kit;
-    }
-
-    public Kit getKit() {
-        return kit;
     }
 
     public void add(Player player) {

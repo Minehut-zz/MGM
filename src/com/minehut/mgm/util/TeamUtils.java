@@ -11,6 +11,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -92,10 +94,9 @@ public class TeamUtils {
 
         player.getInventory().setChestplate(new ItemStack(Material.CHAINMAIL_CHESTPLATE));
 
-        player.getInventory().setItem(0, new ItemStack(Material.COMPASS));
-        player.getInventory().setItem(2, ItemStackFactory.createItem(Material.LEATHER_CHESTPLATE, C.aqua + C.bold + "Team Picker"));
-
-        player.setPlayerListName(C.aqua + player.getName());
+        player.getInventory().setItem(1, ItemStackFactory.createItem(Material.CHEST, C.yellow + C.bold + "/kit"));
+        player.getInventory().setItem(3, ItemStackFactory.createItem(Material.LEATHER_CHESTPLATE, C.aqua + C.bold + "Team Picker"));
+        player.getInventory().setItem(8, ItemStackFactory.createItem(Material.WATCH, C.red + C.bold + "/hub"));
 
         for (Player player1 : Bukkit.getServer().getOnlinePlayers()) {
             TeamModule team = TeamUtils.getTeamByPlayer(player1);
@@ -106,6 +107,10 @@ public class TeamUtils {
                 player1.showPlayer(player);
             }
         }
+    }
+
+    public static boolean onSameTeam(Player p1, Player p2) {
+        return getTeamByPlayer(p1) == getTeamByPlayer(p2);
     }
 
     public static boolean isSpectator(Player player) {

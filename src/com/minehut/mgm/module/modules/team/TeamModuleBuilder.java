@@ -32,6 +32,7 @@ public class TeamModuleBuilder implements ModuleBuilder {
             results.add(new TeamModule(name, id, color, false));
             F.log("Added team: " + name + " with id: " + id);
         }
+
         results.add(new TeamModule("Spectators", "spectators", ChatColor.AQUA, true));
         F.log("Added team: Spectators");
 

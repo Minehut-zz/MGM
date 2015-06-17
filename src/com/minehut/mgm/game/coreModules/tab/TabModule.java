@@ -48,7 +48,7 @@ public class TabModule implements Module {
 
 
 
-        String header = C.gray + C.bold + "You are playing on: " + C.aqua + "mc.minehut.com";
+        String header = C.gray + "You are playing on " + C.aqua + "mc.minehut.com";
         String footer = C.gray + "Time: "
                 + timerColor
                 + StringUtils.formatTime(GameTimer.getTimeInSeconds())

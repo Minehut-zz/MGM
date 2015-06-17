@@ -3,7 +3,9 @@ package com.minehut.mgm.game.coreModules.damage;
 import com.minehut.commons.common.sound.S;
 import com.minehut.mgm.GameHandler;
 import com.minehut.mgm.MGM;
+import com.minehut.mgm.game.kit.kitPlayer.GamePlayer;
 import com.minehut.mgm.module.Module;
+import com.minehut.mgm.util.TeamUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.*;
@@ -12,7 +14,11 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.ProjectileHitEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.util.Vector;
+
+import java.util.UUID;
 
 /**
  * Created by Luke on 2/6/15.
@@ -47,7 +53,7 @@ public class DamageManagerModule implements Module {
 			}
 
 			else if (((EntityDamageByEntityEvent) event).getDamager() != null
-					&& !(((EntityDamageByEntityEvent) event).getDamager() instanceof Arrow)) {
+					&& !(((EntityDamageByEntityEvent) event).getDamager() instanceof Projectile)) {
 				damagerEntity = (LivingEntity) ((EntityDamageByEntityEvent) event).getDamager();
 			}
 		}
@@ -70,10 +76,53 @@ public class DamageManagerModule implements Module {
 
 		if (damageEvent.isCancelled()) {
 			/* Disable knockback */
+			event.setDamage(0);
 			event.setCancelled(true);
 		} else {
 			/* Keep knockback */
 			event.setDamage(0);
+		}
+	}
+
+	@EventHandler
+	public void onRespawn(PlayerRespawnEvent event) {
+		CustomRespawnEvent respawn = new CustomRespawnEvent(event.getPlayer(), GameHandler.getGameHandler().getMatchWorld().getSpawnLocation());
+		MGM.getInstance().getServer().getPluginManager().callEvent(respawn);
+		event.getPlayer().teleport(respawn.getSpawn());
+	}
+
+	@EventHandler (priority = EventPriority.LOW)
+	public void onCustomDamage(CustomDamageEvent event) {
+		if(GameHandler.getHandler().getMatch().isRunning()) {
+			if (event.getHurtPlayer() != null && event.getDamagerPlayer() != null) {
+				if (TeamUtils.getTeamByPlayer(event.getHurtPlayer()) != TeamUtils.getTeamByPlayer(event.getDamagerPlayer())) {
+					GameHandler.getHandler().getKitManager().getGamePlayerManager().getGamePlayer(event.getHurtPlayer()).setLastDamagedFrom(event.getDamagerPlayer().getUniqueId());
+				}
+			}
+		}
+	}
+
+	@EventHandler
+	public void onCustomDeath(CustomDeathEvent event) {
+		if (event.getDeadPlayer() != null && event.getKillerPlayer() == null) {
+			GamePlayer gamePlayer = GameHandler.getGameHandler().getKitManager().getGamePlayerManager().getGamePlayer(event.getDeadPlayer());
+			UUID lastHit = gamePlayer.getLastDamagedFrom();
+
+			if (lastHit != null) {
+				Player killer = Bukkit.getServer().getPlayer(lastHit);
+				if (killer != null) {
+					event.setKillerPlayer(killer);
+				}
+				gamePlayer.setLastDamagedFrom(null);
+			}
+		}
+	}
+
+	/* No arrows on ground */
+	@EventHandler
+	public void onProjectileHit(ProjectileHitEvent event) {
+		if(!(event.getEntity() instanceof FishHook)) {
+			event.getEntity().remove();
 		}
 	}
 
@@ -82,7 +131,7 @@ public class DamageManagerModule implements Module {
 		if(event.isCancelled()) return;
 
 		if ((((Damageable)event.getHurtEntity()).getHealth() - event.getDamage()) <= 0D) {
-			if (event.getHurtPlayer() == null) {
+			if (event.getHurtPlayer() == null && !(event.getHurtEntity() instanceof Player)) {
 				event.getHurtEntity().setHealth(0d); //Instantly kill mob
 				return;
 			}
@@ -201,9 +250,6 @@ public class DamageManagerModule implements Module {
 		EntityDamageByEntityEvent eventEE = (EntityDamageByEntityEvent)event;
 
 		if ((eventEE.getDamager() instanceof Projectile)) {
-			if (eventEE.getDamager() instanceof Fish) {
-				return null;
-			}
 			return (Projectile) eventEE.getDamager();
 		}
 		return null;

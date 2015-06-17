@@ -1,11 +1,8 @@
 package com.minehut.mgm.match;
 
 import com.minehut.commons.common.chat.F;
-import com.minehut.mgm.MGM;
 import com.minehut.mgm.game.Game;
 import com.minehut.mgm.game.GameFactory;
-import com.minehut.mgm.module.Module;
-import com.minehut.mgm.module.ModuleFactory;
 import com.minehut.mgm.rotation.LoadedMap;
 import com.minehut.mgm.util.DomUtils;
 import org.jdom2.Document;
@@ -13,7 +10,6 @@ import org.jdom2.JDOMException;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.UUID;
 
 /**

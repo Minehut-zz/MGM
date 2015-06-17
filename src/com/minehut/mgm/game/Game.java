@@ -1,5 +1,7 @@
 package com.minehut.mgm.game;
 
+import com.minehut.commons.common.chat.C;
+import com.minehut.mgm.GameHandler;
 import com.minehut.mgm.game.coreModules.chat.ChatModule;
 import com.minehut.mgm.game.coreModules.damage.CustomDamageEvent;
 import com.minehut.mgm.game.coreModules.damage.DamageManagerModuleBuilder;
@@ -9,6 +11,7 @@ import com.minehut.mgm.game.coreModules.tab.TabModule;
 import com.minehut.mgm.game.coreModules.teamPicker.TeamPickerModule;
 import com.minehut.mgm.game.coreModules.timer.GameTimer;
 import com.minehut.mgm.game.coreModules.tntTracker.TntTracker;
+import com.minehut.mgm.game.kit.Kit;
 import com.minehut.mgm.module.modules.build.BuildModuleBuilder;
 import com.minehut.mgm.module.modules.destroyable.DestroyableBuilder;
 import com.minehut.mgm.module.modules.destroyable.DestroyableBreakManagerModule;
@@ -25,7 +28,6 @@ import com.minehut.mgm.module.modules.grenade.GrenadeModuleBuilder;
 import com.minehut.mgm.module.modules.hunger.HungerModuleBuilder;
 import com.minehut.mgm.module.modules.instakill.InstakillModuleBuilder;
 import com.minehut.mgm.module.modules.itemdrop.ItemDropModuleBuilder;
-import com.minehut.mgm.module.modules.kit.KitBuilder;
 import com.minehut.mgm.module.modules.noLeave.NoLeaveModuleBuilder;
 import com.minehut.mgm.module.modules.noModify.NoModifyModuleBuilder;
 import com.minehut.mgm.module.modules.region.RegionBuilder;
@@ -35,11 +37,14 @@ import com.minehut.mgm.module.modules.spawn.SpawnBuilder;
 import com.minehut.mgm.module.modules.spawnProtection.SpawnProtectionModuleBuilder;
 import com.minehut.mgm.module.modules.team.TeamModuleBuilder;
 import com.minehut.mgm.module.modules.tntProtection.TntProtectionModuleBuilder;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by luke on 6/2/15.
@@ -49,10 +54,12 @@ public abstract class Game implements Listener {
     public ArrayList<Module> modules;
     public ArrayList<ModuleBuilder> builders;
     public String name;
+    public List<Kit> kits;
 
-    public Game(Match match, String name) {
+    public Game(Match match, String name, List<Kit> kits) {
         this.match = match;
         this.name = name;
+        this.kits = kits;
         this.modules = new ArrayList<>();
         this.builders = new ArrayList<>();
     }
@@ -75,7 +82,12 @@ public abstract class Game implements Listener {
             MGM.getInstance().getServer().getPluginManager().registerEvents(module, MGM.getInstance());
         }
 
-        /* Register Game Listener*/
+        /* Register Kit Listeners */
+        for (Kit kit : this.kits) {
+            MGM.getInstance().getServer().getPluginManager().registerEvents(kit, MGM.getInstance());
+        }
+
+        /* Register Game Listener */
         MGM.getInstance().getServer().getPluginManager().registerEvents(this, MGM.getInstance());
 
         this.postModulesLoaded();
@@ -86,7 +98,6 @@ public abstract class Game implements Listener {
         this.addBuilder(new TeamModuleBuilder());
         this.addBuilder(new DestroyableBuilder());
         this.addBuilder(new DamageManagerModuleBuilder());
-        this.addBuilder(new KitBuilder());
         this.addBuilder(new HungerModuleBuilder());
         this.addBuilder(new SpawnBuilder());
         this.addBuilder(new InstakillModuleBuilder());
@@ -149,11 +160,16 @@ public abstract class Game implements Listener {
         for (Module module : this.modules) {
             module.unload();
         }
+        for (Kit kit : this.kits) {
+            kit.unload();
+        }
         this.unload();
     }
 
     @EventHandler
     public void onVoidDamage(CustomDamageEvent event) {
+        if(!GameHandler.getHandler().getMatch().isRunning()) return;
+
         if (event.getEventCause() == EntityDamageEvent.DamageCause.VOID) {
             event.setDamage(999);
         }
@@ -165,5 +181,9 @@ public abstract class Game implements Listener {
 
     public ArrayList<Module> getModules() {
         return modules;
+    }
+
+    public List<Kit> getKits() {
+        return kits;
     }
 }

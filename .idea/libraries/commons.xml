@@ -1,12 +1,13 @@
 <component name="libraryTable">
   <library name="commons">
     <CLASSES>
-      <root url="jar://$USER_HOME$/minehut/mgm/plugins/core.jar!/" />
       <root url="jar://$USER_HOME$/minehut/output/plugins/commons.jar!/" />
-      <root url="jar://$USER_HOME$/minehut/output/plugins/ProtocolLib.jar!/" />
       <root url="jar://$USER_HOME$/minehut/output/plugins/status.jar!/" />
+      <root url="file://$PROJECT_DIR$" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/src" />
+    </SOURCES>
   </library>
 </component>

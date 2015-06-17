@@ -1,5 +1,6 @@
 package com.minehut.mgm.game.coreModules.spectator;
 
+import com.minehut.mgm.GameHandler;
 import com.minehut.mgm.game.coreModules.damage.CustomDamageEvent;
 import com.minehut.mgm.module.Module;
 import com.minehut.mgm.util.TeamUtils;
@@ -32,17 +33,28 @@ public class SpectatorModule implements Module {
                 event.setCancelled(true);
             }
         }
+
+        else if(!GameHandler.getGameHandler().getMatch().isRunning()) {
+            event.setCancelled(true);
+        }
     }
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
-        if (TeamUtils.isSpectator(event.getPlayer())) {
+        if(!GameHandler.getGameHandler().getMatch().isRunning()) {
+            event.setCancelled(true);
+        }
+        else if (TeamUtils.isSpectator(event.getPlayer())) {
             event.setCancelled(true);
         }
     }
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
+        if(!GameHandler.getGameHandler().getMatch().isRunning()) {
+            event.setCancelled(true);
+        }
+
         if (TeamUtils.isSpectator(event.getPlayer())) {
             event.setCancelled(true);
         }
@@ -50,6 +62,10 @@ public class SpectatorModule implements Module {
 
     @EventHandler
     public void onDropItem(PlayerDropItemEvent event) {
+        if(!GameHandler.getGameHandler().getMatch().isRunning()) {
+            event.setCancelled(true);
+        }
+
         if (TeamUtils.isSpectator(event.getPlayer())) {
             event.setCancelled(true);
         }
@@ -58,6 +74,9 @@ public class SpectatorModule implements Module {
     @EventHandler
     public void onItemPickup(PlayerPickupItemEvent event) {
         if (TeamUtils.isSpectator(event.getPlayer())) {
+            event.setCancelled(true);
+        }
+        else if(!GameHandler.getGameHandler().getMatch().isRunning()) {
             event.setCancelled(true);
         }
     }

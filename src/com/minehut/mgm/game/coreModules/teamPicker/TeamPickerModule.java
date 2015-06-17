@@ -1,11 +1,13 @@
 package com.minehut.mgm.game.coreModules.teamPicker;
 
+import com.minehut.commons.common.bungee.Bungee;
 import com.minehut.commons.common.chat.F;
 import com.minehut.commons.common.items.EnchantGlow;
 import com.minehut.commons.common.items.ItemStackFactory;
 import com.minehut.core.Core;
 import com.minehut.core.player.Rank;
 import com.minehut.mgm.GameHandler;
+import com.minehut.mgm.MGM;
 import com.minehut.mgm.module.Module;
 import com.minehut.mgm.module.modules.team.TeamModule;
 import com.minehut.mgm.util.C;
@@ -108,7 +110,9 @@ public class TeamPickerModule implements Module {
         if (TeamUtils.getTeamByPlayer(event.getPlayer()).isSpectator() || !GameHandler.getGameHandler().getMatch().isRunning()) {
             if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
                 if (event.getPlayer().getItemInHand() != null) {
-                    if (event.getPlayer().getItemInHand().getType().equals(Material.LEATHER_CHESTPLATE)) {
+                    if (event.getPlayer().getItemInHand().getType().equals(Material.LEATHER_CHESTPLATE)
+                            || event.getPlayer().getItemInHand().getType().equals(Material.CHEST)
+                            || event.getPlayer().getItemInHand().getType().equals(Material.WATCH)) {
                         event.setCancelled(true);
                         event.getPlayer().getInventory().setChestplate(null);
                         if (event.getPlayer().getItemInHand().hasItemMeta()) {
@@ -116,6 +120,12 @@ public class TeamPickerModule implements Module {
                                 if (event.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals(C.aqua + C.bold + "Team Picker")) {
                                     event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.CLICK, 1, 2);
                                     event.getPlayer().openInventory(getTeamPicker());
+                                } else if (event.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals(C.yellow + C.bold + "/kit")) {
+                                    event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.CLICK, 1, 2);
+                                    GameHandler.getHandler().getKitManager().openKitMenu(event.getPlayer());
+                                } else if (event.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals(C.red + C.bold + "/hub")) {
+                                    event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.CLICK, 1, 2);
+                                    Bungee.sendToServer(MGM.getInstance(), event.getPlayer(), "HUB-1");
                                 }
                             }
                         }

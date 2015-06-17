@@ -1,6 +1,7 @@
 package com.minehut.mgm.game.coreModules.pregame;
 
 import com.minehut.commons.common.chat.F;
+import com.minehut.commons.common.sound.S;
 import com.minehut.mgm.util.C;
 import com.minehut.mgm.MGM;
 import com.minehut.mgm.event.GameStartEvent;
@@ -30,6 +31,7 @@ public class PregameModule implements Module {
 
                         if (timeLeft <= 5) {
                             F.broadcast("The match will start in " + C.red + timeLeft + C.white + " seconds.");
+                            S.clickAll();
                         } else if (timeLeft <= 60 && (timeLeft % 10 == 0)) {
                             F.broadcast("The match will start in " + C.red + timeLeft + C.white + " seconds.");
                         }

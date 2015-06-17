@@ -1,6 +1,7 @@
 package com.minehut.mgm.module.modules.noLeave;
 
 import com.minehut.commons.common.chat.F;
+import com.minehut.mgm.GameHandler;
 import com.minehut.mgm.MGM;
 import com.minehut.mgm.module.Module;
 import com.minehut.mgm.module.modules.region.Region;
@@ -41,11 +42,13 @@ public class NoLeaveModule implements Module {
         return Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(MGM.getInstance(), new Runnable() {
             @Override
             public void run() {
-                for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-                    if (!TeamUtils.getSpectators().contains(player)) {
-                        if (!region.insideRegion(player.getLocation())) {
-                            F.warning(player, "Do not leave the battlefield!");
-                            player.damage(5);
+                if (GameHandler.getHandler().getMatch().isRunning()) {
+                    for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+                        if (!TeamUtils.getSpectators().contains(player)) {
+                            if (!region.insideRegionAllowBelow(player.getLocation())) {
+                                F.warning(player, "Do not leave the battlefield!");
+                                player.teleport(TeamUtils.getTeamByPlayer(player).getRandomSpawn());
+                            }
                         }
                     }
                 }

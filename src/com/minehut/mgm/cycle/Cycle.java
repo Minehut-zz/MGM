@@ -33,6 +33,10 @@ public class Cycle implements Runnable {
         handler.setMatchFile(new File("matches/" + uuid.toString() + "/"));
     }
 
+    public void setMap(LoadedMap map) {
+        this.map = map;
+    }
+
     public LoadedMap getMap() {
         return map;
     }

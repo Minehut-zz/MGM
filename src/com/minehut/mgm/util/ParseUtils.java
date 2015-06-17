@@ -1,6 +1,7 @@
 package com.minehut.mgm.util;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -95,6 +96,22 @@ public class ParseUtils {
             if (color.name().equals(StringUtils.getTechnicalName(string))) return color;
         }
         return DyeColor.WHITE;
+    }
+
+    public static Color getColorFromChatColor(ChatColor color) {
+        if (color == ChatColor.BLUE) {
+            return Color.BLUE;
+        } else if (color == ChatColor.RED) {
+            return Color.RED;
+        } else if (color == ChatColor.AQUA) {
+            return Color.AQUA;
+        } else if (color == ChatColor.GREEN) {
+            return Color.GREEN;
+        } else if (color == ChatColor.DARK_PURPLE) {
+            return Color.PURPLE;
+        } else {
+            return Color.AQUA;
+        }
     }
 
     public static PotionEffect getPotion(Element potion) {

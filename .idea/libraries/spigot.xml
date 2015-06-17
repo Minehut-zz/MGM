@@ -2,8 +2,6 @@
   <library name="spigot">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../Jars/spigot.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Jars/jdom-2.0.6.jar!/" />
-      <root url="jar://$USER_HOME$/minehut/output/plugins/core.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

@@ -3,6 +3,7 @@ package com.minehut.mgm;
 import com.minehut.commons.common.chat.F;
 import com.minehut.mgm.cycle.Cycle;
 import com.minehut.mgm.event.CycleCompleteEvent;
+import com.minehut.mgm.game.kit.KitManager;
 import com.minehut.mgm.match.Match;
 import com.minehut.mgm.rotation.Rotation;
 import com.minehut.mgm.rotation.exception.RotationLoadException;
@@ -25,11 +26,14 @@ public class GameHandler {
     private Match match;
     private Cycle cycle;
     private File matchFile;
-    private boolean globalMute;
+
+    private KitManager kitManager;
 
     public GameHandler() throws RotationLoadException {
         handler = this;
-//        this.moduleFactory = new ModuleFactory();
+
+        this.kitManager = new KitManager();
+
         rotation = new Rotation();
         cycle = new Cycle(this, rotation.getNext(), UUID.randomUUID());
         Bukkit.getScheduler().scheduleSyncDelayedTask(MGM.getInstance(), new Runnable() {
@@ -84,10 +88,6 @@ public class GameHandler {
         return cycle;
     }
 
-    public boolean isGlobalMute() {
-        return globalMute;
-    }
-
     public Match getMatch() {
         return match;
     }
@@ -110,5 +110,9 @@ public class GameHandler {
 
     public static GameHandler getGameHandler() {
         return handler;
+    }
+
+    public KitManager getKitManager() {
+        return kitManager;
     }
 }

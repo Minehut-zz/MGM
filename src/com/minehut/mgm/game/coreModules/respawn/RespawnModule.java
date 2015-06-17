@@ -16,6 +16,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -59,11 +60,8 @@ public class RespawnModule implements Module {
         Bukkit.getServer().broadcastMessage(this.getDeathMessage(event.getKillerPlayer(), event.getDeadPlayer(), event));
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOW)
     public void onRespawn(CustomRespawnEvent event) {
-        TeamModule team = TeamUtils.getTeamByPlayer(event.getPlayer());
-
-        event.setSpawn(team.getRandomSpawn());
         PlayerUtils.resetPlayer(event.getPlayer());
 
         event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 30, 10));
@@ -72,8 +70,15 @@ public class RespawnModule implements Module {
             event.getPlayer().setAllowFlight(true);
             event.getPlayer().setFlying(true);
         } else {
-            team.getKit().apply(event.getPlayer());
+//            team.getKit().apply(event.getPlayer());
         }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onRespawnDouble(CustomRespawnEvent event) {
+        TeamModule team = TeamUtils.getTeamByPlayer(event.getPlayer());
+        event.setSpawn(team.getRandomSpawn());
+        event.getPlayer().teleport(event.getSpawn());
     }
 
 

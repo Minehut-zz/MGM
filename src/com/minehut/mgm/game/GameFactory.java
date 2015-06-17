@@ -1,8 +1,8 @@
 package com.minehut.mgm.game;
 
 import com.minehut.commons.common.chat.F;
-import com.minehut.mgm.game.games.TDM;;
-import com.minehut.mgm.game.games.DTW;
+import com.minehut.mgm.game.games.tdm.TDM;;
+import com.minehut.mgm.game.games.dtw.DTW;
 import com.minehut.mgm.match.Match;
 import org.jdom2.Document;
 import org.jdom2.Element;
