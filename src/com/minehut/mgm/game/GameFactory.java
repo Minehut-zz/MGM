@@ -3,6 +3,7 @@ package com.minehut.mgm.game;
 import com.minehut.commons.common.chat.F;
 import com.minehut.mgm.game.games.tdm.TDM;;
 import com.minehut.mgm.game.games.dtw.DTW;
+import com.minehut.mgm.game.games.tnt.TNT;
 import com.minehut.mgm.match.Match;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -22,6 +23,8 @@ public class GameFactory {
             return new DTW(match);
         } else if (s.equalsIgnoreCase("TDM")) {
             return new TDM(match);
+        } else if (s.equalsIgnoreCase("TNT")) {
+            return new TNT(match);
         }
 
         F.log("Couldn't find game: " + s);

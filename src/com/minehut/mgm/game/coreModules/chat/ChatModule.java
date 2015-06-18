@@ -4,6 +4,7 @@ import com.minehut.commons.common.level.Level;
 import com.minehut.commons.common.player.ChatUtil;
 import com.minehut.core.Core;
 import com.minehut.core.player.PlayerInfo;
+import com.minehut.core.player.Rank;
 import com.minehut.mgm.GameHandler;
 import com.minehut.mgm.game.kit.kitPlayer.GamePlayer;
 import com.minehut.mgm.module.Module;
@@ -38,11 +39,27 @@ public class ChatModule implements Module {
         TeamModule team = TeamUtils.getTeamByPlayer(event.getPlayer());
         int level = (int) gamePlayer.getLevel();
 
-        event.setFormat(
-                playerInfo.getRank().getTag()
-                + Level.getLevelColor(level) + level + " "
-                + C.white + event.getPlayer().getName()
-                + team.getColor() + " » "
-                + C.white + "%2$s");
+        if (playerInfo.getRank().has(null, Rank.Admin, false)) {
+            event.setFormat(
+                    playerInfo.getRank().getTag()
+                            + Level.getLevelColor(level) + level + " "
+                            + C.white + event.getPlayer().getName()
+                            + team.getColor() + " » "
+                            + C.green + "%2$s");
+        } else if (playerInfo.getRank().has(null, Rank.Mod, false)) {
+            event.setFormat(
+                    playerInfo.getRank().getTag()
+                            + Level.getLevelColor(level) + level + " "
+                            + C.white + event.getPlayer().getName()
+                            + team.getColor() + " » "
+                            + C.yellow + "%2$s");
+        } else {
+            event.setFormat(
+                    playerInfo.getRank().getTag()
+                            + Level.getLevelColor(level) + level + " "
+                            + C.white + event.getPlayer().getName()
+                            + team.getColor() + " » "
+                            + C.white + "%2$s");
+        }
     }
 }

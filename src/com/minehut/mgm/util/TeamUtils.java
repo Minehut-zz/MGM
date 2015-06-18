@@ -124,6 +124,10 @@ public class TeamUtils {
         for (Player player1 : Bukkit.getServer().getOnlinePlayers()) {
             player1.showPlayer(player);
         }
+
+        for (Player spec : getSpectators().getPlayers()) {
+            player.hidePlayer(spec);
+        }
     }
 
 }

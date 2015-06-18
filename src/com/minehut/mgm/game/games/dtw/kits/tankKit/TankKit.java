@@ -17,7 +17,6 @@ public class TankKit extends Kit {
         super("Tank", Material.DIAMOND_CHESTPLATE, 150);
 
         super.addItem(ItemStackFactory.createItem(Material.WOOD_SWORD, Enchantment.KNOCKBACK, 1));
-        super.addItem(Material.BOW);
         super.addItem(Material.WOOD_AXE);
         super.addItem(ItemStackFactory.createItem(Material.WOOD, 32));
         super.addItem(ItemStackFactory.createItem(Material.LOG, 8));

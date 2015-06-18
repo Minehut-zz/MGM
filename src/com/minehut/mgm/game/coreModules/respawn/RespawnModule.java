@@ -35,16 +35,20 @@ public class RespawnModule implements Module {
     public void onDeath(CustomDeathEvent event) {
         ArrayList<Player> ignore = new ArrayList<>();
 
+        String deathMessage = this.getDeathMessage(event.getKillerPlayer(), event.getDeadPlayer(), event);
+
         if (event.getDeadPlayer() != null) {
             ignore.add(event.getDeadPlayer());
 
             S.playSound(event.getDeadPlayer(), Sound.IRONGOLEM_HIT);
+            event.getDeadPlayer().sendMessage(deathMessage);
         }
 
         if (event.getKillerPlayer() != null) {
             ignore.add(event.getKillerPlayer());
 
             S.playSound(event.getKillerPlayer(), Sound.IRONGOLEM_HIT);
+            event.getKillerPlayer().sendMessage(deathMessage);
         }
 
         for (Entity entity : event.getDeadEntity().getNearbyEntities(10, 10, 10)) {
@@ -56,8 +60,6 @@ public class RespawnModule implements Module {
                 }
             }
         }
-
-        Bukkit.getServer().broadcastMessage(this.getDeathMessage(event.getKillerPlayer(), event.getDeadPlayer(), event));
     }
 
     @EventHandler(priority = EventPriority.LOW)
@@ -72,6 +74,8 @@ public class RespawnModule implements Module {
         } else {
 //            team.getKit().apply(event.getPlayer());
         }
+
+        event.getPlayer().setFireTicks(0);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)

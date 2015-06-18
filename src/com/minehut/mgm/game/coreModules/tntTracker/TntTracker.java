@@ -8,9 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
@@ -56,10 +54,11 @@ public class TntTracker implements Module {
     @EventHandler
     public void onExplosionPrime(ExplosionPrimeEvent event) {
         if (event.getEntity().getType() == EntityType.PRIMED_TNT) {
+            TNTPrimed tnt = (TNTPrimed) event.getEntity();
             Location location = event.getEntity().getLocation();
             if (tntPlaced.containsKey(location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ())) {
-                UUID player = tntPlaced.get(location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ());
-                event.getEntity().setMetadata("source", new FixedMetadataValue(MGM.getInstance(), player));
+                UUID playerUUID = tntPlaced.get(location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ());
+                event.getEntity().setMetadata("source", new FixedMetadataValue(MGM.getInstance(), playerUUID));
                 tntPlaced.remove(location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ());
             }
         }
@@ -68,15 +67,14 @@ public class TntTracker implements Module {
     @EventHandler(priority = EventPriority.LOW)
     public void onCustomDamage(CustomDamageEvent event) {
         if (event.getTnt() != null) {
-
-                Entity tnt = event.getTnt();
-                if (tnt.hasMetadata("source")) {
-                    Player realDamager = Bukkit.getServer().getPlayer(getWhoPlaced(tnt));
-                    if (realDamager != null) {
-                        event.setDamagerEntity(realDamager);
-                        event.setDamagerPlayer(realDamager);
-                    }
+            Entity tnt = event.getTnt();
+            if (tnt.hasMetadata("source")) {
+                Player realDamager = Bukkit.getServer().getPlayer(getWhoPlaced(tnt));
+                if (realDamager != null) {
+                    event.setDamagerEntity(realDamager);
+                    event.setDamagerPlayer(realDamager);
                 }
+            }
         }
     }
 

@@ -17,10 +17,13 @@ import com.minehut.mgm.util.PlayerUtils;
 import com.minehut.mgm.util.TeamUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
+import org.bukkit.event.block.BlockFromToEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -89,6 +92,19 @@ public class WrapperModule implements Module {
         }
 
         Bukkit.getServer().getPluginManager().callEvent(new GameEndEvent(GameHandler.getGameHandler().getMatch()));
+    }
+
+    @EventHandler
+    public void onLavaFlow(BlockFromToEvent event) {
+        if (event.getBlock().getType() == Material.LAVA
+                || event.getBlock().getType() == Material.STATIONARY_LAVA) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onHunger(FoodLevelChangeEvent event) {
+        event.setFoodLevel(10);
     }
 
     @EventHandler

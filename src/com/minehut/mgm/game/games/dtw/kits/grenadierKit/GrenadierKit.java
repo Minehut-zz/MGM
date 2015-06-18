@@ -67,6 +67,19 @@ public class GrenadierKit extends Kit {
     }
 
     @EventHandler
+    public void onEntityExplode(EntityExplodeEvent event) {
+        if (event.getEntity() instanceof TNTPrimed) {
+            List<Block> toRemove = new ArrayList<>();
+            for (Block block : event.blockList()) {
+                toRemove.add(block);
+            }
+            for (Block block : toRemove) {
+                event.blockList().remove(block);
+            }
+        }
+    }
+
+    @EventHandler
     public void onGrenadeThrow(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         if(player.getItemInHand().getType() != null) {

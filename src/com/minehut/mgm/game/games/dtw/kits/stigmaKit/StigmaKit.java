@@ -43,8 +43,8 @@ public class StigmaKit extends Kit {
     public StigmaKit() {
         super("Stigma", Material.FISHING_ROD, 1000);
 
-        super.addItem(ItemStackFactory.createItem(Material.FISHING_ROD, C.red + "Target Marker"));
         super.addItem(Material.STONE_SWORD);
+        super.addItem(ItemStackFactory.createItem(Material.FISHING_ROD, C.red + "Target Marker"));
         super.addItem(Material.BOW);
         super.addItem(Material.STONE_AXE);
         super.addItem(ItemStackFactory.createItem(Material.WOOD, 32));
@@ -113,7 +113,7 @@ public class StigmaKit extends Kit {
         if (event.getHurtPlayer() != null && event.getDamagerPlayer() != null) {
             if (this.marks.containsKey(event.getDamagerPlayer().getUniqueId())) {
                 this.marks.getFirstValue(event.getDamagerPlayer().getUniqueId()).toString().equalsIgnoreCase(event.getHurtPlayer().getUniqueId().toString());
-                event.setDamage(event.getDamage() + 8);
+                event.setDamage(event.getDamage() + 9);
 
                 ParticleEffect.LAVA.display((float) .2, (float) .2, (float) .2, 0, 20, event.getHurtPlayer().getEyeLocation(), 50);
                 event.getHurtPlayer().getEyeLocation().getWorld().playSound(event.getHurtPlayer().getEyeLocation(), Sound.GLASS, 10, 1);

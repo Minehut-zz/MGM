@@ -4,11 +4,14 @@ import com.minehut.mgm.GameHandler;
 import com.minehut.mgm.game.coreModules.damage.CustomDamageEvent;
 import com.minehut.mgm.module.Module;
 import com.minehut.mgm.util.TeamUtils;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
+import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 
@@ -67,6 +70,26 @@ public class SpectatorModule implements Module {
         }
 
         if (TeamUtils.isSpectator(event.getPlayer())) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onInvMove(InventoryMoveItemEvent event) {
+        if (TeamUtils.isSpectator((Player) event.getDestination().getHolder())) {
+            event.setCancelled(true);
+        }
+        else if(!GameHandler.getGameHandler().getMatch().isRunning()) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onInvMove(InventoryDragEvent event) {
+        if (TeamUtils.isSpectator((Player) event.getWhoClicked())) {
+            event.setCancelled(true);
+        }
+        else if(!GameHandler.getGameHandler().getMatch().isRunning()) {
             event.setCancelled(true);
         }
     }

@@ -1,9 +1,12 @@
 package com.minehut.mgm.game;
 
 import com.minehut.commons.common.chat.C;
+import com.minehut.core.Core;
 import com.minehut.mgm.GameHandler;
+import com.minehut.mgm.event.TeamWinEvent;
 import com.minehut.mgm.game.coreModules.chat.ChatModule;
 import com.minehut.mgm.game.coreModules.damage.CustomDamageEvent;
+import com.minehut.mgm.game.coreModules.damage.CustomDeathEvent;
 import com.minehut.mgm.game.coreModules.damage.DamageManagerModuleBuilder;
 import com.minehut.mgm.game.coreModules.respawn.RespawnModule;
 import com.minehut.mgm.game.coreModules.spectator.SpectatorModule;
@@ -28,6 +31,7 @@ import com.minehut.mgm.module.modules.grenade.GrenadeModuleBuilder;
 import com.minehut.mgm.module.modules.hunger.HungerModuleBuilder;
 import com.minehut.mgm.module.modules.instakill.InstakillModuleBuilder;
 import com.minehut.mgm.module.modules.itemdrop.ItemDropModuleBuilder;
+import com.minehut.mgm.module.modules.noExplode.NoExplodeModuleBuilder;
 import com.minehut.mgm.module.modules.noLeave.NoLeaveModuleBuilder;
 import com.minehut.mgm.module.modules.noModify.NoModifyModuleBuilder;
 import com.minehut.mgm.module.modules.region.RegionBuilder;
@@ -37,6 +41,8 @@ import com.minehut.mgm.module.modules.spawn.SpawnBuilder;
 import com.minehut.mgm.module.modules.spawnProtection.SpawnProtectionModuleBuilder;
 import com.minehut.mgm.module.modules.team.TeamModuleBuilder;
 import com.minehut.mgm.module.modules.tntProtection.TntProtectionModuleBuilder;
+import com.minehut.mgm.util.CreditUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -56,12 +62,18 @@ public abstract class Game implements Listener {
     public String name;
     public List<Kit> kits;
 
+    private int killCredits;
+    private int killXP;
+
     public Game(Match match, String name, List<Kit> kits) {
         this.match = match;
         this.name = name;
         this.kits = kits;
         this.modules = new ArrayList<>();
         this.builders = new ArrayList<>();
+
+        this.killCredits = 2;
+        this.killXP = 4;
     }
 
     public abstract void unload();
@@ -110,6 +122,7 @@ public abstract class Game implements Listener {
         this.addBuilder(new NoLeaveModuleBuilder());
         this.addBuilder(new NoModifyModuleBuilder());
         this.addBuilder(new SpawnProtectionModuleBuilder());
+        this.addBuilder(new NoExplodeModuleBuilder());
 
         for (ModuleBuilder moduleBuilder : builders) {
 
@@ -173,6 +186,45 @@ public abstract class Game implements Listener {
         if (event.getEventCause() == EntityDamageEvent.DamageCause.VOID) {
             event.setDamage(999);
         }
+    }
+
+    @EventHandler
+    public void onGameEnd(TeamWinEvent event) {
+        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+            if(event.getWinningTeam().getPlayers().contains(player)) {
+                Core.getInstance().addCredits(player, CreditUtils.getCreditsWithBonuses(player, 10), "Win a Game");
+                GameHandler.getGameHandler().getKitManager().getGamePlayerManager().addXP(player, 10);
+            } else {
+                Core.getInstance().addCredits(player, CreditUtils.getCreditsWithBonuses(player, 6), "Finish a Game");
+                GameHandler.getGameHandler().getKitManager().getGamePlayerManager().addXP(player, 8);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onKill(CustomDeathEvent event) {
+        if (event.getDeadPlayer() != null && event.getKillerPlayer() != null) {
+            if (event.getDeadPlayer() != event.getKillerPlayer()) {
+                Core.getInstance().addCredits(event.getKillerPlayer(), CreditUtils.getCreditsWithBonuses(event.getKillerPlayer(), this.killCredits), "Kill an Enemy");
+                GameHandler.getGameHandler().getKitManager().getGamePlayerManager().addXP(event.getKillerPlayer(), this.killXP);
+            }
+        }
+    }
+
+    public int getKillCredits() {
+        return killCredits;
+    }
+
+    public void setKillCredits(int killCredits) {
+        this.killCredits = killCredits;
+    }
+
+    public int getKillXP() {
+        return killXP;
+    }
+
+    public void setKillXP(int killXP) {
+        this.killXP = killXP;
     }
 
     public String getName() {
