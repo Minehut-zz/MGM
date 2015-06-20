@@ -53,6 +53,7 @@ public class MGM extends JavaPlugin implements Listener {
 
         /* Status */
         Status.getStatus().startStatusUpload("TNT", "dev", "echo", "Destroy the enemy team's wool core.");
+//        Status.getStatus().startStatusUpload("DTW", "warzone", "bravo", "Destroy the enemy team's wool core.");
 
         this.getServer().getPluginManager().registerEvents(this, this);
     }

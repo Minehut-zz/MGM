@@ -48,12 +48,14 @@ public class EngineerKit extends Kit {
 
     @EventHandler
     public void onCraft(PrepareItemCraftEvent event) {
-        for(HumanEntity he:event.getViewers()) {
-            if (he instanceof Player) {
-                Player player = (Player) he;
-                if (!super.usingThisKit(player)) {
-                    event.getInventory().setResult(new ItemStack(Material.AIR));
-                    F.warning(player, "Only " + C.yellow + C.bold + "ENGINEERS" + C.gray + " can craft items");
+        if(event.getRecipe().getResult().getType() != Material.WOOD) {
+            for (HumanEntity he : event.getViewers()) {
+                if (he instanceof Player) {
+                    Player player = (Player) he;
+                    if (!super.usingThisKit(player)) {
+                        event.getInventory().setResult(new ItemStack(Material.AIR));
+                        F.warning(player, "Only " + C.yellow + C.bold + "ENGINEERS" + C.gray + " can craft items");
+                    }
                 }
             }
         }

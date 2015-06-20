@@ -12,8 +12,11 @@ import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
+import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.ExplosionPrimeEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 
@@ -45,9 +48,13 @@ public class TntTracker implements Module {
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
+        if(event.isCancelled()) return;
+
         if (event.getBlock().getType() == Material.TNT) {
             Location location = event.getBlock().getLocation();
             tntPlaced.put(location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ(), event.getPlayer().getUniqueId());
+
+            Bukkit.getServer().broadcastMessage("Stored location " + location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ());
         }
     }
 
@@ -56,11 +63,28 @@ public class TntTracker implements Module {
         if (event.getEntity().getType() == EntityType.PRIMED_TNT) {
             TNTPrimed tnt = (TNTPrimed) event.getEntity();
             Location location = event.getEntity().getLocation();
+
+            Bukkit.getServer().broadcastMessage("ExplosionPrimeEvent fired");
+
             if (tntPlaced.containsKey(location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ())) {
                 UUID playerUUID = tntPlaced.get(location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ());
                 event.getEntity().setMetadata("source", new FixedMetadataValue(MGM.getInstance(), playerUUID));
                 tntPlaced.remove(location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ());
             }
+        }
+    }
+
+    @EventHandler
+    public void onTntSpawn(CreatureSpawnEvent event) {
+        if (event.getEntity().getType() == EntityType.PRIMED_TNT     ) {
+            Bukkit.getServer().broadcastMessage("TNT was spawned");
+        }
+    }
+
+    @EventHandler
+    public void onTntSpawn(EntitySpawnEvent event) {
+        if (event.getEntity().getType() == EntityType.PRIMED_TNT     ) {
+            Bukkit.getServer().broadcastMessage("TNT was spawned");
         }
     }
 

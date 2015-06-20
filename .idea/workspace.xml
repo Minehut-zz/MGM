@@ -7,38 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07039547-43d7-4398-a383-2bebc1ea0b09" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/game/games/tnt/kits/BlasterKit.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/module/modules/noExplode/NoExplodeModule.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/module/modules/noExplode/NoExplodeModuleBuilder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/game/games/tnt/TNT.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/coreModules/chat/ChatModule.class" afterPath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/coreModules/chat/ChatModule.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/games/dtw/DTW.class" afterPath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/games/dtw/DTW.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/Game.class" afterPath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/Game.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/GameFactory.class" afterPath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/GameFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/games/dtw/kits/grenadierKit/GrenadierKit.class" afterPath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/games/dtw/kits/grenadierKit/GrenadierKit.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/games/dtw/kits/engineerKit/EngineerKit.class" afterPath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/games/dtw/kits/engineerKit/EngineerKit.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/MGM.class" afterPath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/MGM.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/coreModules/respawn/RespawnModule.class" afterPath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/coreModules/respawn/RespawnModule.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/rotation/Rotation.class" afterPath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/rotation/Rotation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/coreModules/spectator/SpectatorModule.class" afterPath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/coreModules/spectator/SpectatorModule.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/games/dtw/kits/stigmaKit/StigmaKit.class" afterPath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/games/dtw/kits/stigmaKit/StigmaKit.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/games/dtw/kits/tankKit/TankKit.class" afterPath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/games/dtw/kits/tankKit/TankKit.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/util/TeamUtils.class" afterPath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/util/TeamUtils.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/coreModules/tntTracker/TntTracker.class" afterPath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/coreModules/tntTracker/TntTracker.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/coreModules/wrapper/WrapperModule.class" afterPath="$PROJECT_DIR$/out/production/MGM/com/minehut/mgm/game/coreModules/wrapper/WrapperModule.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/chat/ChatModule.java" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/chat/ChatModule.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/DTW.java" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/DTW.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/minehut/mgm/game/Game.java" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/game/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/minehut/mgm/game/GameFactory.java" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/game/GameFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/grenadierKit/GrenadierKit.java" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/grenadierKit/GrenadierKit.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/engineerKit/EngineerKit.java" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/engineerKit/EngineerKit.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/minehut/mgm/MGM.java" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/MGM.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/respawn/RespawnModule.java" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/respawn/RespawnModule.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/minehut/mgm/rotation/Rotation.java" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/rotation/Rotation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/spectator/SpectatorModule.java" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/spectator/SpectatorModule.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/stigmaKit/StigmaKit.java" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/stigmaKit/StigmaKit.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/tankKit/TankKit.java" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/tankKit/TankKit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/minehut/mgm/util/TeamUtils.java" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/util/TeamUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/tntTracker/TntTracker.java" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/tntTracker/TntTracker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/wrapper/WrapperModule.java" afterPath="$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/wrapper/WrapperModule.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MGM.iws" />
@@ -61,61 +41,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GameHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/GameHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Rotation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/rotation/Rotation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoadedMap.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/rotation/LoadedMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/Game.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="99" column="9" selection-start-line="99" selection-start-column="9" selection-end-line="99" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DTW.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/DTW.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="140" column="5" selection-start-line="140" selection-start-column="5" selection-end-line="140" selection-end-column="5" />
+              <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+              <folding>
+                <element signature="e#6452#6453#0" expanded="true" />
+                <element signature="e#6499#6500#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StigmaKit.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/stigmaKit/StigmaKit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TNT.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/games/tnt/TNT.java">
+      <file leaf-file-name="EngineerKit.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/engineerKit/EngineerKit.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="33" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
+              <caret line="66" column="22" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -144,8 +97,41 @@
       <file leaf-file-name="TntTracker.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/tntTracker/TntTracker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40441176">
-              <caret line="70" column="43" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.42647058">
+              <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+              <folding>
+                <element signature="e#1375#1376#0" expanded="true" />
+                <element signature="e#1422#1423#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TankKit.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/tankKit/TankKit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MGM.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/MGM.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="68" column="23" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NoExplodeModule.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/module/modules/noExplode/NoExplodeModule.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="47" column="63" selection-start-line="47" selection-start-column="63" selection-end-line="47" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -210,7 +196,6 @@
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/kit/Kit.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/kit/kitPlayer/GamePlayerManager.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/util/ParseUtils.java" />
-        <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/engineerKit/EngineerKit.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/warriorKit/WarriorKit.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/util/TeamUtils.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/util/PlayerUtils.java" />
@@ -218,21 +203,22 @@
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/respawn/RespawnModule.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/chat/ChatModule.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/spectator/SpectatorModule.java" />
-        <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/tankKit/TankKit.java" />
-        <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/stigmaKit/StigmaKit.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/wrapper/WrapperModule.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/grenadierKit/GrenadierKit.java" />
-        <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/DTW.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/module/modules/score/ScoreModule.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/module/modules/noModify/NoExplodeModule.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/Game.java" />
-        <option value="$PROJECT_DIR$/src/com/minehut/mgm/MGM.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/module/modules/noExplode/NoExplodeModule.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/module/modules/noExplode/NoExplodeModuleBuilder.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/rotation/Rotation.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/games/tnt/TNT.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/GameFactory.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/games/tnt/kits/BlasterKit.java" />
+        <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/tankKit/TankKit.java" />
+        <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/engineerKit/EngineerKit.java" />
+        <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/DTW.java" />
+        <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/stigmaKit/StigmaKit.java" />
+        <option value="$PROJECT_DIR$/src/com/minehut/mgm/MGM.java" />
         <option value="$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/tntTracker/TntTracker.java" />
       </list>
     </option>
@@ -248,9 +234,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="73" />
+    <option name="x" value="48" />
     <option name="y" value="23" />
-    <option name="width" value="1111" />
+    <option name="width" value="1232" />
     <option name="height" value="777" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -276,8 +262,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -365,7 +351,63 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rotation" />
+              <option name="myItemId" value="module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MGM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MGM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mgm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MGM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MGM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mgm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="noExplode" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -534,6 +576,154 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="dtw" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MGM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MGM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mgm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="games" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dtw" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MGM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MGM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mgm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="games" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dtw" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tankKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MGM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MGM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mgm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="games" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dtw" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stigmaKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MGM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MGM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mgm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="games" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dtw" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engineerKit" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -785,11 +975,17 @@
       <option name="project" value="LOCAL" />
       <updated>1433742173929</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Balance out kits">
+      <created>1434660840090</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1434660840090</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="73" y="23" width="1111" height="777" extended-state="0" />
+    <frame x="48" y="23" width="1232" height="777" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -802,7 +998,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2709271" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27029222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -835,7 +1031,8 @@
     <MESSAGE value="Remove unused imports" />
     <MESSAGE value="Add regions and destroyables" />
     <MESSAGE value="Start of Kit system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start of Kit system" />
+    <MESSAGE value="Balance out kits" />
+    <option name="LAST_COMMIT_MESSAGE" value="Balance out kits" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -848,13 +1045,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/kit/Ability.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="125" column="24" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/tab/TabModule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -953,13 +1143,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/engineerKit/EngineerKit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="46" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/warriorKit/WarriorKit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -999,10 +1182,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="118" column="9" selection-start-line="118" selection-start-column="9" selection-end-line="118" selection-end-column="9" />
-          <folding>
-            <element signature="e#3781#3782#0" expanded="false" />
-            <element signature="e#3846#3847#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1034,28 +1213,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/tankKit/TankKit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/stigmaKit/StigmaKit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="108" column="42" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/wrapper/WrapperModule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="102" column="5" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
-          <folding>
-            <element signature="e#3843#3844#0" expanded="false" />
-            <element signature="e#3881#3882#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1087,13 +1248,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/MGM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/module/modules/tntProtection/TntProtectionModule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1122,13 +1276,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/module/modules/noExplode/NoExplodeModule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="47" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/cycle/Cycle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1147,7 +1294,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1155,7 +1301,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1171,14 +1316,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="99" column="9" selection-start-line="99" selection-start-column="9" selection-end-line="99" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/DTW.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="140" column="5" selection-start-line="140" selection-start-column="5" selection-end-line="140" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1215,11 +1352,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/../Jars/spigot.jar!/org/bukkit/Bukkit.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13740458">
+          <caret line="48" column="19" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/module/modules/noExplode/NoExplodeModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="63" selection-start-line="47" selection-start-column="63" selection-end-line="47" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/engineerKit/EngineerKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="22" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/DTW.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+          <folding>
+            <element signature="e#6452#6453#0" expanded="true" />
+            <element signature="e#6499#6500#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/stigmaKit/StigmaKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/games/dtw/kits/tankKit/TankKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/MGM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="68" column="23" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/minehut/mgm/game/coreModules/tntTracker/TntTracker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40441176">
-          <caret line="70" column="43" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
-          <folding />
+        <state vertical-scroll-proportion="0.42647058">
+          <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+          <folding>
+            <element signature="e#1375#1376#0" expanded="true" />
+            <element signature="e#1422#1423#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

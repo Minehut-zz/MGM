@@ -165,7 +165,9 @@ public class DTW extends Game {
 
     @EventHandler
     public void onItemSpawn(ItemSpawnEvent event) {
-        event.setCancelled(true);
+        if(event.getEntity().getItemStack().getType() != Material.WOOD) {
+            event.setCancelled(true);
+        }
     }
 
     @Override
